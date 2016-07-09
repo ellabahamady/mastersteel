@@ -1,0 +1,1490 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <title>Master Steel | My Project</title>
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="css2/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css2/component.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/datepicker.css" />
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/datepicker.js"></script>
+    <script src="js2/modernizr-custom.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- List Menu-->
+        <div class="menu-wrap" id="menuBody">
+            <nav id="ml-menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li class="menu__item"><a class="menu__link" id="menuHome" href="Homepage.html">Home</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMaster" data-submenu="submenu-1" href="#">Master</a></li>
+                        <li class="menu__item"><a class="menu__link active" id="menuTransaction" data-submenu="submenu-2" href="#">Project</a></li>
+                    </ul>
+                    <!-- Submenu 1 -->
+                    <ul data-menu="submenu-1" class="menu__level">
+                        <li class="menu__item"><a class="menu__link" id="menuMasterJabatan" href="MasterJabatan.html">Jabatan</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterUser" href="MasterUser.html">User</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterClient" href="MasterClient.html">Client</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterProvince" href="MasterProvince.html">Province</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterCity" href="MasterCity.html">City</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterDeveloper" href="MasterDeveloper.html">Developer</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterContractor" href="MasterContractor.html">Contractor</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterConsultant" href="MasterConsultant.html">Consultant</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterSupplier" href="MasterSupplier.html">Supplier</a></li>
+                    </ul>
+                    <!-- Submenu 2 -->
+                    <ul data-menu="submenu-2" class="menu__level">
+                        <li class="menu__item"><a class="menu__link active" id="menuProjectMaster" href="MasterProject.html">My Project</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuProjectOther" href="OtherProject.html">Other Project</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+
+        <!-- Content Website -->
+        <button class="menu-button" id="open-button" style="margin-top:2%;">Open Menu</button>
+        <div class="content-wrap">
+            <div class="content" id="headerBody">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <div class="Setting">
+                                <a href="Setting.html"><img src="Image/setting_icon.png" width="30" height="30" /></a>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="Loginpage.html" id="Logout" class="UserMenu" onclick="Logout();">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; margin-left:1%;" id="bodyContent">
+                <table align="center">
+                    <!-- Hidden Id -->
+                    <tr>
+                        <td>
+                            <input type="hidden" id="hiddenId" />
+                            <input type="hidden" id="hiddenUserId" />
+                            <input type="hidden" id="hiddenUserNIK" />
+                            <input type="hidden" id="hiddenUserName" />
+
+                            <input type="hidden" id="hiddenLatitude" />
+                            <input type="hidden" id="hiddenLongitude" />
+
+                            <input type="hidden" id="hiddenImageFileName" />
+
+                        </td>
+                    </tr>
+                    <!-- Title -->
+                    <tr>
+                        <td align="center">
+                            <h3 class="labelTitlePage">My Project</h3>
+                        </td>
+                    </tr>
+                    <!-- Data Table -->
+                    <tr>
+                        <td>
+                            <div>
+                                <table id="datatable" border="1" class="display" align="center" style="text-align:center" width="800">
+                                    <thead>
+                                        <tr>
+                                            <th>Contract Number</th>
+                                            <th>Project Name</th>
+                                            <th>Range Date Start</th>
+                                            <th>Range Date End</th>
+                                            <th>Range Nominal Start</th>
+                                            <th>Range Nominal End</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <!-- Map -->
+                    <tr>
+                        <td style="width:200px;height:600px">
+                            <div style="width:100%;height:100%;">
+                                <div id="dvMap" class="map" style="width:100%;height:100%;"></div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <!-- Add Button -->
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <input type="button" value="Add" class="buttonAdd" id="btnAdd" onclick="setEmptyField();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="FormUser">
+                                <table border="0" align="center" style="margin-top:10px;">
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblNomor" class="labelNomor">Contract Number</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtNomor" class='TabOnEnter Textbox' tabindex="1" style="width:300px" />
+                                        </td>
+                                        <td>
+                                            <label id="lblNomorWarning" style="color:red" class="labelNomorWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblName" class="labelName">Project Name</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtName" class='TabOnEnter Textbox' tabindex="2" style="width:300px" />
+                                        </td>
+                                        <td>
+                                            <label id="lblNameWarning" style="color:red" class="labelNameWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblProvince" class="labelProvince">Province</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlProvince" class='TabOnEnter Textbox' tabindex="3" style="width:300px"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblCity" class="labelCity">City</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlCity" class='TabOnEnter Textbox' tabindex="4" style="width:300px"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblDeveloper" class="labelDeveloper">Developer</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlDeveloper" class='TabOnEnter Textbox' tabindex="5" style="width:300px"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblContractor" class="labelContractor">Contractor</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlContractor" class='TabOnEnter Textbox' tabindex="6" style="width:300px"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblConsultant" class="labelConsultant">Consultant</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlConsultant" class='TabOnEnter Textbox' tabindex="7" style="width:300px"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblSupplier" class="labelProvince">Supplier</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlSupplier" class='TabOnEnter Textbox' tabindex="8" style="width:300px"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblRangeDate" class="labelRangeDate">Range Date</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtRangeDateStart" class='TabOnEnter Textbox datepicker' tabindex="9" style="width:127px" title='D-MMM-YYYY' />
+                                            <label id="lblDateUntil" class="labelRangeDate"> - </label>
+                                            <input type="text" id="txtRangeDateEnd" class='TabOnEnter Textbox datepicker' tabindex="10" style="width:127px" title='D-MMM-YYYY' />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblRangeQuality" class="labelRangeQuality">Range Quality</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtRangeQualityStart" class='TabOnEnter Textbox' tabindex="11" style="width:144px" />
+                                            <label id="lblQualityUntil" class="labelRangeQuality"> - </label>
+                                            <input type="text" id="txtRangeQualityEnd" class='TabOnEnter Textbox' tabindex="12" style="width:144px" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblNominalQuality" class="labelRangeNominal">Range Nominal</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtRangeNominalStart" class='TabOnEnter Textbox' tabindex="13" style="width:144px" />
+                                            <label id="lblQualityUntil" class="labelRangeNominal"> - </label>
+                                            <input type="text" id="txtRangeNominalEnd" class='TabOnEnter Textbox' tabindex="14" style="width:144px" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblNote" class="labelNote">Note</label>
+                                        </td>
+                                        <td>
+                                            <textarea rows="4" id="txtNote" class="TabOnEnter Textarea" tabindex="15" style="width:300px"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblImage" class="labelImage">Image</label>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <table border="0" width="100%">
+                                                    <tr>
+                                                        <td>
+                                                            <input type="file" id="imageFile" accept="image/*" value="#" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div id="imageFileName" class="labelFileName"></div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <img id="imageUpload" src="" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="15"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="button" value="Delete" class="buttonDelete Button" id="btnDelete" onclick="return validasiDelete();" />
+                                    </td>
+                                    <td width="10"></td>
+                                    <td>
+                                        <input type="button" value="Save" class="buttonSave Button" id="btnSave" onclick="checkField();" />
+                                    </td>
+                                    <td width="10"></td>
+                                    <td>
+                                        <input type="button" value="Cancel" class="buttonCancel Button" id="btnCancel" onclick="setEmptyField();" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Loading Gif-->
+            <div class="loader" id="loading"></div>
+
+            <div class="content" style="margin-top:1%;" id="footerBody">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" id="AboutUs" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" id="ContactUs" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+
+    <script src="js/classie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js2/classie.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+    (function () {
+        var menuEl = document.getElementById('ml-menu'),
+            mlmenu = new MLMenu(menuEl, {
+                backCtrl: false
+            });
+    })();
+    </script>
+
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script src="js/jquery-impromptu.min.js"></script>
+    <link rel='stylesheet' type='text/css' href="CSS/jquery-impromptu.css" />
+
+    <!--loading gif-->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        })
+    </script>
+
+    <!--js change color-->
+    <script src="js/jscolor.js"></script>
+    <script src="js/jscolor.min.js"></script>
+
+    <script>
+
+        var userId;
+        var userNik;
+        var userName;
+        var userJabatanId;
+        var userJabatanName;
+
+        //WEB API URI
+        //var uriProvince = 'http://localhost:5842/api/province';
+        //var uriCity = 'http://localhost:5842/api/city';
+        //var uriDeveloper = 'http://localhost:5842/api/developer';
+        //var uriContractor = 'http://localhost:5842/api/contractor';
+        //var uriConsultant = 'http://localhost:5842/api/consultant';
+        //var uriSupplier = 'http://localhost:5842/api/supplier';
+
+        //var uri = 'http://localhost:5842/api/project';
+        //var uriBase = 'http://localhost:5842/';
+
+        var uriProvince = 'http://mastersteel.azurewebsites.net/api/province';
+        var uriCity = 'http://mastersteel.azurewebsites.net/api/city';
+        var uriDeveloper = 'http://mastersteel.azurewebsites.net/api/developer';
+        var uriContractor = 'http://mastersteel.azurewebsites.net/api/contractor';
+        var uriConsultant = 'http://mastersteel.azurewebsites.net/api/consultant';
+        var uriSupplier = 'http://mastersteel.azurewebsites.net/api/supplier';
+
+        var uri = 'http://mastersteel.azurewebsites.net/api/project';
+        var uriBase = 'http://mastersteel.azurewebsites.net/';
+
+        
+        var map;
+        var markers = [];
+        var geocoder;
+
+        var fileImage;
+
+        //IMAGE PATH NEWS URI
+        var imageUri = 'http://168.63.167.70/Content/ProjectMap/'
+
+        //DATA TABLE
+                var table;
+
+                var loadProvince = 'false';
+                var loadCity = 'false';
+                var loadDeveloper = 'false';
+                var loadContractor = 'false';
+                var loadConsultant = 'false';
+                var loadSupplier = 'false';
+
+                $(document).ready(function () {
+
+                    userId = sessionStorage.getItem('UserId');
+                    userNik = sessionStorage.getItem('UserNIK');
+                    userName = sessionStorage.getItem('UserName');
+                    userJabatanId = sessionStorage.getItem('UserJabatanId');
+                    userJabatanName = sessionStorage.getItem('UserJabatanName');
+
+                    $("#hiddenUserId").val(userId);
+                    $("#hiddenUserNIK").val(userNik);
+                    $("#hiddenUserName").val(userName);
+
+                    if (userId == null && userNik == null && userName == null) {
+                        var url = "Loginpage.html";
+                        window.location.href = url;
+                    }
+
+                    if (userId == "") {
+                        var url = "Loginpage.html";
+                        window.location.href = url;
+                    }
+
+                    //set display menu visibility
+                    if (userJabatanName != "Administrator")
+                    {
+                        $("#menuMaster").css("display", "none");
+                    }
+
+                    //ON FORM LOAD - GET NEWS DATA
+                    $.getJSON(uri + '/GetAllProjects/values?userId=' + userId)
+                        .done(function (data) {
+
+                            //Init Map
+                            initializeMap(data);
+//                            initMap(data);
+
+                            // On success, 'data' contains a list of products.
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'Nomor' },
+                                        { data: 'Name' },
+                                        { data: 'RangeDateStart' },
+                                        { data: 'RangeDateEnd' },
+                                        { data: 'RangeNominalStart' },
+                                        { data: 'RangeNominalEnd' }
+                                    ]
+                                }
+                                );
+
+                            table = $('#datatable').DataTable();
+
+                            //function row table selected
+                            $('#datatable tbody').on('click', 'tr', function () {
+
+                                if ($(this).hasClass('selected')) {
+                                    $(this).removeClass('selected');
+                                }
+                                else {
+                                    table.$('tr.selected').removeClass('selected');
+                                    $(this).addClass('selected');
+                                }
+
+                                //show details data
+                                var dataRow = table.row(this).data();
+                                getUserById(dataRow.Id);
+
+                            });
+                           
+                            //drop down list data
+                            loadProvince();
+                            loadDeveloper();
+                            loadContractor();
+                            loadConsultant();
+                            loadSupplier();
+                            
+                            function loadProvince() {
+                                $.getJSON(uriProvince + '/GetAllProvinces')
+                                .done(function (data) {
+                                    var dataProvince = '';
+                                    var provinceId;
+                                    $.each(data, function (k, item) {
+                                        $("#ddlProvince")
+                                              .append($("<option></option>")
+                                              .attr("value", item.Id)
+                                              .text(item.Name));
+
+                                        if (k == 0) {
+                                            provinceId = item.Id;
+                                            $('#ddlProvince').change(function () {
+//                                                loadCity(item.id);
+                                                loadCity($(this).find(':selected').val())
+                                            })
+                                        }
+                                    });
+
+                                    loadCity(provinceId);
+
+                                });
+                            }
+                          
+                            function loadCity(provinceId) {
+                                $("#ddlCity").children().remove()
+                                $.getJSON(uriCity + '/GetCityByProvince/values?provinceId=' + provinceId)
+                                    .done(function (result) {
+                                        $(result).each(function (k, item) {
+                                            $("#ddlCity").append($('<option>', {
+                                                value: item.Id,
+                                                text: item.Name,
+                                            }));
+                                        })
+
+                                    });
+                            }
+
+                            function loadDeveloper() {
+                                $.getJSON(uriDeveloper + '/GetAllDevelopers')
+                                    .done(function (data) {
+                                        var dataDeveloper = '';
+                                        // On success, 'data' contains a list of products.
+                                        $.each(data, function (k, item) {
+                                            $("#ddlDeveloper")
+                                                  .append($("<option></option>")
+                                                  .attr("value", item.Id)
+                                                  .text(item.Name));
+                                        });
+                                    });
+                            }
+
+                            function loadContractor() {
+                                $.getJSON(uriContractor + '/GetAllContractors')
+                                    .done(function (data) {
+                                        var dataContractor = '';
+
+                                        $.each(data, function (k, item) {
+                                            $("#ddlContractor")
+                                                  .append($("<option></option>")
+                                                  .attr("value", item.Id)
+                                                  .text(item.Name));
+                                        });
+                                    });
+                            }
+
+                            function loadConsultant() {
+                                $.getJSON(uriConsultant + '/GetAllConsultants')
+                                    .done(function (data) {
+                                        var dataConsultant = '';
+                                        $.each(data, function (k, item) {
+                                            $("#ddlConsultant")
+                                                  .append($("<option></option>")
+                                                  .attr("value", item.Id)
+                                                  .text(item.Name));
+                                        });
+                                    });
+                            }
+
+                            function loadSupplier() {
+                                $.getJSON(uriSupplier + '/GetAllSuppliers')
+                                     .done(function (data) {
+                                         var dataSupplier = '';
+                                         $.each(data, function (k, item) {
+                                             $("#ddlSupplier")
+                                                   .append($("<option></option>")
+                                                   .attr("value", item.Id)
+                                                   .text(item.Name));
+                                         });
+                                     });
+                            }
+                        });
+
+                    $('#imageFile').change(function (event) {
+                        readURL(this);
+                        //          fileImage = $('#imageFile').val();
+                    });
+
+                    function readURL(input) {
+
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (event) {
+
+                                $('#imageFileName').text(input.files[0].name);
+                                fileImage = input.files[0];
+                                $('#imageUpload').attr('src', this.result);
+                                $('#imageUpload').attr('class', "imageUpload");
+
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+
+                });
+
+
+        //Enter Key to move to inputs
+        $(document).on("keypress", ".TabOnEnter", function (e) {
+            //Only do something when the user presses enter
+            if (e.keyCode == 13) {
+                var nextElement = $('[tabindex="' + (this.tabIndex + 1) + '"]');
+                console.log(this, nextElement);
+                if (nextElement.length)
+                    nextElement.focus()
+                else
+                    $('[tabindex="1"]').focus();
+            }
+        });
+
+        //$('#button').click(function () {
+        //    table.row('.selected').remove().draw(false);
+        //});
+
+
+        function getUserById(id) {
+            $.getJSON(uri + '/GetProject/values?id=' + id)
+                .done(function (data) {
+
+                    clearMarkers(null);
+
+                    $("#hiddenId").val(data.Id);
+//                    $("#hiddenUserId").val(data.UserId);
+                    $("#txtNomor").val(data.Nomor);
+                    $("#txtName").val(data.Name);
+                    $("#ddlProvince").val(data.ProvinceId.toLowerCase());
+                    $("#ddlCity").val(data.CityId.toLowerCase());
+                    $("#ddlDeveloper").val(data.DeveloperId.toLowerCase());
+                    $("#ddlContractor").val(data.ContractorId.toLowerCase());
+                    $("#ddlConsultant").val(data.ConsultantId.toLowerCase());
+                    $("#ddlSupplier").val(data.SupplierId.toLowerCase());
+                    $("#txtRangeDateStart").val(data.RangeDateStart);
+                    $("#txtRangeDateEnd").val(data.RangeDateEnd);
+                    $("#txtRangeQualityStart").val(data.RangeQualityStart);
+                    $("#txtRangeQualityEnd").val(data.RangeQualityEnd);
+                    $("#txtRangeNominalStart").val(data.RangeNominalStart);
+                    $("#txtRangeNominalEnd").val(data.RangeNominalEnd);
+                    $("#txtNote").val(data.Note);
+                    $("#hiddenLatitude").val(data.Latitude);
+                    $("#hiddenLongitude").val(data.Longitude);
+                    $("#hiddenId").val(data.Id);
+
+                    if ((data.Latitude != 0) && (data.Longitude != 0))
+                    {
+                        var LatLng = new google.maps.LatLng(data.Latitude, data.Longitude);
+//                        showMarkers();
+                        showMarker(LatLng);
+                    }
+
+                    var imageFilePath = data.ImageFile;
+
+                    if (imageFilePath != "")
+                    {
+                        $("#hiddenImageFileName").val(imageFilePath);
+                    }
+
+                    
+                    if (imageFilePath != "") {
+                        imageFilePath = imageUri + imageFilePath;
+                        $('#imageUpload').attr('src', imageFilePath);
+                        $('#imageUpload').attr('class', "imageUpload");
+                    }
+                    else {
+                        $('#imageUpload').attr('src', "");
+                        $('#imageUpload').attr('class', "");
+                    }
+                    fileImage = null;
+
+
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    alert("Error : " + err.text);
+                });
+        }
+
+        function Logout() {
+            sessionStorage.setItem('UserId', '');
+            sessionStorage.setItem('UserNIK', '');
+            sessionStorage.setItem('UserName', '');
+            sessionStorage.setItem('UserJabatanId', '');
+            sessionStorage.setItem('UserJabatanName', '');
+
+            var url = "Loginpage.html";
+            window.location.href = url;
+        }
+
+        function checkField() {
+            if ($("#txtNomor").val() == '') {
+                $("#lblNomorWarning").text("Tidak boleh kosong");
+            }
+            if ($("#txtNomor").val() != '') {
+                $("#lblNomorWarning").text("");
+            }
+            if ($("#txtName").val() == '') {
+                $("#lblNameWarning").text("Tidak boleh kosong");
+            }
+            if ($("#txtName").val() != '') {
+                $("#lblNameWarning").text("");
+            }
+            if ($("#txtNomor").val() != '' && $("#txtName").val() != '') {
+                validasiSave();
+            }         
+        }
+        function validasiSave() {
+            $.prompt("Apakah data anda sudah benar?", {
+                title: "Save Data",
+                buttons: { "Ya": true, "Tidak": false },
+                submit: function (e, v, m, f) {
+
+                    if (v) {
+                        addUpdateData();
+                    }
+
+                    console.log("Value clicked was: " + v);
+                }
+            });
+        }
+
+        function validasiDelete() {
+            $.prompt("Apakah anda yakin ingin menghapus data ini?", {
+                title: "Delete Data",
+                buttons: { "Ya": true, "Tidak": false },
+                submit: function (e, v, m, f) {
+
+                    if (v) {
+                        deleteData();
+                    }
+
+                    console.log("Value clicked was: " + v);
+                }
+            });
+        }
+
+        function saveData(userId, nomor, name, provinceId, cityId, developerId, contractorId, consultantId, supplierId, rangeDateStart, 
+                            rangeDateEnd, rangeQualityStart, rangeQualityEnd, rangeNominalStart, rangeNominalEnd, note, latitude, longitude, imageFilePath)
+        {
+            $("#loading").show(); //show loading
+            table.destroy();
+
+            var userData = { UserId: userId, Nomor: nomor, Name: name, ProvinceId: provinceId, CityId: cityId, DeveloperId: developerId, ContractorId: contractorId, 
+                ConsultantId: consultantId, SupplierId: supplierId, RangeDateStart: rangeDateStart, RangeDateEnd: rangeDateEnd, RangeQualityStart: rangeQualityStart,
+                RangeQualityEnd: rangeQualityEnd, RangeNominalStart: rangeNominalStart, RangeNominalEnd: rangeNominalEnd, Note: note, Latitude: latitude, Longitude: longitude,
+                ImageFile: imageFilePath
+            }
+            $.ajax({
+                type: 'POST',
+                url: uri + '/SaveProject',
+                data: JSON.stringify(userData),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $.getJSON(uri + '/GetAllProjects/values?userId=' + userId)
+                        .done(function (data) {
+
+                            //Init Map
+                            initializeMap(data);
+
+                            // On success, 'data' contains a list of products
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'Nomor' },
+                                        { data: 'Name' },
+                                        { data: 'RangeDateStart' },
+                                        { data: 'RangeDateEnd' },
+                                        { data: 'RangeNominalStart' },
+                                        { data: 'RangeNominalEnd' }
+                                    ]
+                                });
+                            table = $('#datatable').DataTable();
+                        });
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+                });
+                    
+        }
+
+
+        function updateData(id, userId, nomor, name, provinceId, cityId, developerId, contractorId, consultantId, supplierId, rangeDateStart,
+                            rangeDateEnd, rangeQualityStart, rangeQualityEnd, rangeNominalStart, rangeNominalEnd, note, latitude, longitude, imageFilePath) {
+            $("#loading").show(); //show loading
+            table.destroy();
+            var userData = { Id: id, UserId: userId, Nomor: nomor, Name: name, ProvinceId: provinceId, CityId: cityId, DeveloperId: developerId, ContractorId: contractorId,
+                               ConsultantId: consultantId, SupplierId: supplierId, RangeDateStart: rangeDateStart, RangeDateEnd: rangeDateEnd, RangeQualityStart: rangeQualityStart,
+                               RangeQualityEnd: rangeQualityEnd, RangeNominalStart: rangeNominalStart, RangeNominalEnd: rangeNominalEnd, Note: note, Latitude: latitude, Longitude: longitude,
+                                ImageFile: imageFilePath
+                            }
+            $.ajax({
+                type: 'PUT',
+                url: uri + '/UpdateProject',
+                data: JSON.stringify(userData),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $.getJSON(uri + '/GetAllProjects/values?userId=' + userId)
+                        .done(function (data) {
+
+                            //Init Map
+                            initializeMap(data);
+
+                            // On success, 'data' contains a list of products
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'Nomor' },
+                                        { data: 'Name' },
+                                        { data: 'RangeDateStart' },
+                                        { data: 'RangeDateEnd' },
+                                        { data: 'RangeNominalStart' },
+                                        { data: 'RangeNominalEnd' }
+                                    ]
+                                }
+                                );
+
+
+                            table = $('#datatable').DataTable();
+
+                            afterDelete();
+
+                        });
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+        function deleting() {
+            table.row('.selected').remove().draw();
+        }
+
+        function deleteData() {
+            $("#loading").show(); //show loading
+            table.destroy();
+
+            var id = $('#hiddenId').val();
+
+            $.ajax({
+                type: 'Delete',
+                url: uri + '/DeleteProject/values?id=' + id,
+                success: function (data) {
+                    $.getJSON(uri + '/GetAllProjects/values?userId=' + userId)
+                        .done(function (data) {
+
+                            //Init Map
+                            initializeMap(data);
+
+                            // On success, 'data' contains a list of products
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'Nomor' },
+                                        { data: 'Name' },
+                                        { data: 'RangeDateStart' },
+                                        { data: 'RangeDateEnd' },
+                                        { data: 'RangeNominalStart' },
+                                        { data: 'RangeNominalEnd' }
+                                    ]
+                                });
+                            table = $('#datatable').DataTable();
+                            afterDelete();
+                        });
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+        function setEmptyField() {
+//            $("#txtNama").val("");
+            $("#hiddenId").val("");
+
+//            $("#hiddenUserId").val(data.UserId);
+            $("#txtNomor").val("");
+            $("#txtName").val("");
+            //$("#ddlProvince").val(data.ProvinceId.toLowerCase());
+            //$("#ddlCity").val(data.CityId.toLowerCase());
+            //$("#ddlDeveloper").val(data.DeveloperId.toLowerCase());
+            //$("#ddlContractor").val(data.ContractorId.toLowerCase());
+            //$("#ddlConsultant").val(data.ConsultantId.toLowerCase());
+            //$("#ddlSupplier").val(data.SupplierId.toLowerCase());
+            var today = moment().format("ll");
+            $("#txtRangeDateStart").val(today);
+            $("#txtRangeDateEnd").val(today);
+            $("#txtRangeQualityStart").val("");
+            $("#txtRangeQualityEnd").val("");
+            $("#txtRangeNominalStart").val("");
+            $("#txtRangeNominalEnd").val("");
+            $("#txtNote").val("");
+            $("#hiddenLatitude").val(0);
+            $("#hiddenLongitude").val(0);
+
+            $('#imageFileName').text('');
+            $('#imageUpload').attr('src', '');
+            $('#imageUpload').attr('class', '');
+            fileImage = null;
+
+            clearMarkers();
+
+        }
+
+        function afterDelete() {
+            //            $("#txtNama").val("");
+            $("#hiddenId").val("");
+
+            //            $("#hiddenUserId").val(data.UserId);
+            $("#txtNomor").val("");
+            $("#txtName").val("");
+            //$("#ddlProvince").val(data.ProvinceId.toLowerCase());
+            //$("#ddlCity").val(data.CityId.toLowerCase());
+            //$("#ddlDeveloper").val(data.DeveloperId.toLowerCase());
+            //$("#ddlContractor").val(data.ContractorId.toLowerCase());
+            //$("#ddlConsultant").val(data.ConsultantId.toLowerCase());
+            //$("#ddlSupplier").val(data.SupplierId.toLowerCase());
+            var today = moment().format("ll");
+            $("#txtRangeDateStart").val(today);
+            $("#txtRangeDateEnd").val(today);
+            $("#txtRangeQualityStart").val("");
+            $("#txtRangeQualityEnd").val("");
+            $("#txtRangeNominalStart").val("");
+            $("#txtRangeNominalEnd").val("");
+            $("#txtNote").val("");
+            $("#hiddenLatitude").val(0);
+            $("#hiddenLongitude").val(0);
+
+            $('#imageFileName').text('');
+            $('#imageUpload').attr('src', '');
+            $('#imageUpload').attr('class', '');
+            fileImage = null;
+
+        }
+
+        function addUpdateData() {
+            var id = $("#hiddenId").val();
+            //        alert("Id Hidden = " + idHidden);
+
+//            var userId = $("#hiddenUserId").val();
+            var nomor = $("#txtNomor").val();
+            var name = $("#txtName").val();
+            var provinceId = $("#ddlProvince").val();
+            var cityId = $("#ddlCity").val();
+            var developerId = $("#ddlDeveloper").val();
+            var contractorId = $("#ddlContractor").val();
+            var consultantId = $("#ddlConsultant").val();
+            var supplierId = $("#ddlSupplier").val();
+            var rangeDateStart = $("#txtRangeDateStart").val();
+            var rangeDateEnd = $("#txtRangeDateEnd").val();
+            var rangeQualityStart = $("#txtRangeQualityStart").val();
+            var rangeQualityEnd = $("#txtRangeQualityEnd").val();
+            var rangeNominalStart = $("#txtRangeNominalStart").val();
+            var rangeNominalEnd = $("#txtRangeNominalEnd").val();
+            var note = $("#txtNote").val();
+            var latitude = $("#hiddenLatitude").val();
+            var longitude = $("#hiddenLongitude").val();
+
+            var imageFilePath = "";
+
+            if ($("#hiddenImageFileName").val() != "")
+            {
+                imageFilePath = $("#hiddenImageFileName").val();
+            }
+            
+
+
+            if (fileImage != null) {
+                imageFilePath = GetDateTime();
+                imageFilePath = 'Projects_' + imageFilePath + '.' + fileImage.type.split('/').pop();
+
+                var status;
+                status = UploadImage(imageFilePath);
+                //if(status != 'success')
+                //{
+                //    alert('There is a problem uploading image');
+                //}
+            }
+
+            if (id == "" || id == "Add") {
+
+                saveData(userId, nomor, name, provinceId, cityId, developerId, contractorId, consultantId, supplierId, rangeDateStart,
+                            rangeDateEnd, rangeQualityStart, rangeQualityEnd, rangeNominalStart, rangeNominalEnd, note, latitude, longitude, imageFilePath);
+            }
+            else {
+                updateData(id, userId, nomor, name, provinceId, cityId, developerId, contractorId, consultantId, supplierId, rangeDateStart,
+                            rangeDateEnd, rangeQualityStart, rangeQualityEnd, rangeNominalStart, rangeNominalEnd, note, latitude, longitude, imageFilePath);
+            }
+            setEmptyField();
+
+        }
+
+        function GetDateTime() {
+            var tgl = new Date();
+            var tahun = tgl.getFullYear();
+            var bulan = '0' + (tgl.getMonth() + 1);
+            bulan = bulan.substr(bulan.length - 2, 2);
+            var tanggal = '0' + tgl.getDate();
+            tanggal = tanggal.substr(tanggal.length - 2, 2);
+            var jam = '0' + tgl.getHours();
+            jam = jam.substr(jam.length - 2, 2);
+            var menit = '0' + tgl.getMinutes();
+            menit = menit.substr(menit.length - 2, 2);
+            var detik = '0' + tgl.getSeconds();
+            detik = detik.substr(detik.length - 2, 2);
+
+            var result = tahun + "-" + bulan + "-" + tanggal + "-" + jam + "-" + menit + "-" + detik;
+            return result;
+        }
+
+        function UploadImage(fileToUpload) {
+            var status = '';
+            var data = new FormData();
+            data.append("UploadedImage", fileImage);
+            data.append("ImageFileName", fileToUpload);
+
+            //        alert('fileImage : ' + fileImage);
+
+            var urlUpload = '/api/uploadfile/UploadFileImage';
+            //alert('url upload : ' + urlUpload);
+
+            var ajaxRequest = $.ajax({
+                type: "POST",
+                url: urlUpload,
+                contentType: false,
+                processData: false,
+                data: data
+            }).done(function (jqXHR, textStatus, err) {
+                // Do other operation
+                status = textStatus;
+                //            alert('status : ' + status);
+                //                    alert('response ' + err);
+            }).fail(function (xhr, textStatus, errorThrown) {
+                alert('error xhr : ' + xhr.responseText.toString());
+                alert('error textStatus : ' + textStatus);
+                alert('error errorThrown : ' + errorThrown.toString());
+            });
+
+            return status;
+        }
+
+    </script>
+    <!--
+    <script type="text/javascript">
+    var markers = [
+        {
+            "title": 'Alibaug',
+            "lat": '18.641400',
+            "lng": '72.872200',
+            "description": 'Alibaug is a coastal town and a municipal council in Raigad District in the Konkan region of Maharashtra, India.'
+        },
+        {
+            "title": 'Lonavla',
+            "lat": '18.750000',
+            "lng": '73.416700',
+            "description": 'Lonavla'
+        },
+        {
+            "title": 'Mumbai',
+            "lat": '18.964700',
+            "lng": '72.825800',
+            "description": 'Mumbai formerly Bombay, is the capital city of the Indian state of Maharashtra.'
+        },
+        {
+            "title": 'Pune',
+            "lat": '18.523600',
+            "lng": '73.847800',
+            "description": 'Pune is the seventh largest metropolis in India, the second largest in the state of Maharashtra after Mumbai.'
+        },
+        {
+            "title": 'Thane',
+            "lat": '19.182800',
+            "lng": '72.961200',
+            "description": 'Thane'
+        },
+        {
+            "title": 'Vashi',
+            "lat": '18.750000',
+            "lng": '73.033300',
+            "description": 'Vashi'
+        }
+    ];
+    window.onload = function () {
+        var mapOptions = {
+            center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var infoWindow = new google.maps.InfoWindow();
+        var latlngbounds = new google.maps.LatLngBounds();
+        var geocoder = geocoder = new google.maps.Geocoder();
+        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+        for (var i = 0; i < markers.length; i++) {
+            var data = markers[i]
+            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: data.title,
+                draggable: true,
+                animation: google.maps.Animation.DROP
+            });
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    infoWindow.setContent(data.description);
+                    infoWindow.open(map, marker);
+                });
+                google.maps.event.addListener(marker, "dragend", function (e) {
+                    var lat, lng, address;
+                    geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            lat = marker.getPosition().lat();
+                            lng = marker.getPosition().lng();
+                            address = results[0].formatted_address;
+                            alert("Latitude: " + lat + "\nLongitude: " + lng + "\nAddress: " + address);
+                        }
+                    });
+                });
+            })(marker, data);
+            latlngbounds.extend(marker.position);
+        }
+        var bounds = new google.maps.LatLngBounds();
+        map.setCenter(latlngbounds.getCenter());
+        map.fitBounds(latlngbounds);
+    }
+    </script>
+
+    
+    <script type="text/javascript">
+    window.onload = function () {
+        var mapOptions = {
+            center: new google.maps.LatLng(-6.2087634, 106.84559899999999),
+            zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var infoWindow = new google.maps.InfoWindow();
+        var latlngbounds = new google.maps.LatLngBounds();
+        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+        google.maps.event.addListener(map, 'click', function (e) {
+            alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        });
+    }
+    </script>
+
+-->
+
+    
+    <script type="text/javascript">
+
+        //var map;
+        //var markers = [];
+
+        function initializeMap(data)
+        {
+            geocoder = new google.maps.Geocoder();
+
+            if (data.length == 0)
+            {
+                var LatLng = new google.maps.LatLng(-6.175381, 106.828319);
+                var mapOptions = {
+                    center: LatLng,
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                return;
+            }
+            //var mapOptions = {
+            //    zoom: 13,
+            //    mapTypeId: google.maps.MapTypeId.ROADMAP
+            //};
+            //map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+
+            if ((data[0].Latitude != 0) && (data[0].Longitude != 0))
+            {
+
+                var LatLng = new google.maps.LatLng(data[0].Latitude, data[0].Longitude);
+                var mapOptions = {
+                    center: LatLng,
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                //            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: LatLng,
+                    map: map
+                });
+
+                markers.push(marker);
+            }
+
+//            if (navigator.geolocation) {
+
+                for (i = 1; i < data.length; i++)
+                {
+                    if ((data[i].Latitude != 0) && (data[i].Longitude != 0))
+                    {
+                        var LatLng2 = new google.maps.LatLng(data[i].Latitude, data[i].Longitude);
+                        var marker = new google.maps.Marker({
+                            position: LatLng2,
+                            map: map
+                        });
+
+                        markers.push(marker);
+
+                    }
+
+                }
+
+            /*
+                google.maps.event.addListener(map, 'click', function (e) {
+                    var dataLatitude;
+                    var dataLongitude;
+
+                    var location = e.latLng;
+
+                    var marker = new google.maps.Marker({
+                        position: location,
+                        map: map
+                    });
+
+                    markers.push(marker);
+
+                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lat());
+
+                    dataLatitude = e.latLng.lat;
+                    dataLongitude = e.latLng.lat;
+
+                    $("#hiddenLatitude").val(dataLatitude);
+                    $("#hiddenLongitude").val(dataLongitude);
+
+                });
+            */
+            //} else {
+            //    alert('Geo Location feature is not supported in this browser.');
+            //}
+
+//            initMap(data);
+
+        }
+
+        function initMap(latLngData) {
+            //            var kuninganCity = { lat: -6.224340, lng: 106.823379 };
+            var mapOptions = {
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+
+            var mapOptions = {
+                zoom: 1,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+
+            for(i=0; i<latLngData.length;i++)
+            {
+                var markerLatLng = new google.maps.Marker(latLngData[i].Latitude, latLngData[i].Longitude);
+                addMarker(markerLatLng);
+            }
+
+            //var kuninganCity = new google.maps.LatLng(-6.224340, 106.823379);
+
+            //map = new google.maps.Map(document.getElementById('dvMap'), {
+            //    zoom: 12,
+            //    center: kuninganCity,
+            //    mapTypeId: google.maps.MapTypeId.ROADMAP
+            //});
+
+            //// Adds a marker at the center of the map.
+            //addMarker(kuninganCity);
+
+            // This event listener will call addMarker() when the map is clicked.
+            map.addListener('click', function (event) {
+                addMarker(event.latLng);
+            });
+
+            showMarkers(map);
+        }
+
+        function showMarker(location)
+        {
+//            var LatLng = new google.maps.LatLng(data[0].Latitude, data[0].Longitude);
+            //var mapOptions = {
+            //    center: location,
+            //    zoom: 13,
+            //    mapTypeId: google.maps.MapTypeId.ROADMAP
+            //};
+            //var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+
+            //var marker = new google.maps.Marker({
+            //    position: location,
+            //    map: map
+            //});
+            markers.push(marker);
+        }
+
+        // Adds a marker to the map and push to the array.
+        function addMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            markers.push(marker);
+        }
+
+        // Sets the map on all markers in the array.
+        function setMapOnAll(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+
+                //if (i == (markers.length - 1)) {
+                //    map.setCenter(markers[i]);
+                //}
+            }
+        }
+
+        // Removes the markers from the map, but keeps them in the array.
+        function clearMarkers() {
+            setMapOnAll(null);
+            markers = [];
+            google.maps.event.addListener(map, 'click', function (e) {
+
+                setMapOnAll(null);
+                markers = [];
+
+                var dataLatitude;
+                var dataLongitude;
+
+                var location = e.latLng;
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+
+                markers.push(marker);
+
+                alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+
+                dataLatitude = e.latLng.lat;
+                dataLongitude = e.latLng.lng;
+
+                $("#hiddenLatitude").val(dataLatitude);
+                $("#hiddenLongitude").val(dataLongitude);
+
+                //get location name
+                geocoder.geocode({ 'latLng': e.latLng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        console.log(results)
+                        var kota = "";
+                        for (var x = 0; x < results.length; x++)
+                        {
+                            for(var y=0;y<results[x].address_components.length;y++)
+                            {
+                                for(var z=0;z<results[x].address_components[y].types.length;z++)
+                                {
+//                                    if(results[x].address_components[y].types[z] == "administrative_area_level_2")
+                                        if (results[x].address_components[y].types[z] == "locality") {
+                                        kota = results[x].address_components[y].short_name.toString();
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+
+                        //if (results[2]) {
+                        //    //formatted address
+                        //    alert(results[0].formatted_address)
+                        //    //find country name
+                        //    for (var i = 0; i < results[2].address_components.length; i++) {
+                        //        for (var b = 0; b < results[2].address_components[i].types.length; b++) {
+
+                        //            //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                        //            if (results[2].address_components[i].types[b] == "administrative_area_level_2") {
+                        //                //this is the object you are looking for
+                        //                kota = results[2].address_components[i].short_name.toString();
+                        //                break;
+                        //            }
+                        //        }
+                        //    }
+                            //city data
+                            alert('kota = ' + kota);
+
+
+                        //} else {
+                        //    alert("No results found");
+                        //}
+                    } else {
+                        alert("Geocoder failed due to: " + status);
+                    }
+                });
+
+            });
+        }
+
+        // Shows any markers currently in the array.
+        function showMarkers() {
+            setMapOnAll(map);
+        }
+
+        // Deletes all markers in the array by removing references to them.
+        function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+        }
+
+
+        /*
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (p) {
+            var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+            var mapOptions = {
+                center: LatLng,
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: LatLng,
+                map: map,
+                title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
+            });
+
+            google.maps.event.addListener(map, 'click', function (e) {
+                var dataLatitude;
+                var dataLongitude;
+
+                var location = e.latLng;
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+
+                alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lat());
+
+                dataLatitude = e.latLng.lat;
+                dataLongitude = e.latLng.lat;
+
+                $("#hiddenLatitude").val(dataLatitude);
+                $("#hiddenLongitude").val(dataLongitude);
+
+            });
+        });
+    } else {
+        alert('Geo Location feature is not supported in this browser.');
+    }
+
+        */
+    </script> 
+    <!--<script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-WLmLYx8pcPj2JEJTIs3iJotlYUmX75M&signed_in=true&callback=initializeMap">
+    </script>-->
+</body>
+</html>

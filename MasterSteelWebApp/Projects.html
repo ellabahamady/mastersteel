@@ -1,0 +1,2454 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Master Steel | Projects</title>
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="css2/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css2/component.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/datepicker.css" />
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/datepicker.js"></script>
+    <script src="js2/modernizr-custom.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <style type="text/css">
+        div {
+            padding-bottom: 8px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <!-- List Menu-->
+        <div class="menu-wrap">
+            <nav id="ml-menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li id="MasterUsers" class="menu__item"><a class="menu__link" href="Users.html">Users</a></li>
+                        <li class="menu__item"><a class="menu__link active" href="Projects.html">Projects</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ClientProject.html">Client Project</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ListOrders.html">List Orders</a></li>
+                        <li class="menu__item"><a class="menu__link" href="TrackingOrder.html">Tracking Order</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Setting.html">Setting</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+
+        <!-- Content Website -->
+        <button class="menu-button" id="open-button" style="margin-top:2%;">Open Menu</button>
+        <div class="content-wrap">
+            <div class="content">
+                <table>
+                    <!-- Hidden Id -->
+                    <tr>
+                        <td>
+                            <input type="hidden" id="hiddenId" />
+
+                            <input type="hidden" id="hiddenToken" />
+                            <input type="hidden" id="hiddenUserId" />
+                            <input type="hidden" id="hiddenUserName" />
+                            <input type="hidden" id="hiddenUserPassword" />
+                            <input type="hidden" id="hiddenUserMail" />
+                            <input type="hidden" id="hiddenUserType" />
+
+                            <input type="hidden" id="hiddenLatitude" />
+                            <input type="hidden" id="hiddenLongitude" />
+
+                            <input type="hidden" id="hiddenImageFileName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <a href="Login.html" id="Logout" class="UserMenu" onclick="Logout();">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; margin-left:1%;">
+                <table align="center" width="90%">
+                    <tr>
+                        <td align="center">
+                            <h3 class="labelTitlePage">Master Projects</h3>
+                        </td>
+                    </tr>
+                    <!-- Advanced Search -->
+                    <tr>
+                        <td align="right">
+                            <input type="button" id="btnAdvancedSearch" value="Advanced Search" class="buttonDelete Button" style="background-color:white; color:black;" />                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="10"></td>
+                    </tr>
+                    <tr id="formAdvancedSearch" style="display:none;">
+                        <td>
+                            <div class="FormUser" style="background-color:black; border:2px solid #EE2E26;">
+                                <table border="0" align="center" style="margin-top:10px;">
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Project Category</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlProjectCategorySearch" class='TabOnEnter Textbox' tabindex="19" style="font-size:small">
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Building Area (sqm) </label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <input type="number" id="txtBuildingAreaFrom" class='TabOnEnter Textbox filterme' tabindex="30" style="font-size:small" />
+                                        </td>
+
+                                        <td style="padding-right:10px"><label class="labelName" style="color:white"> To </label></td>
+                                        <td style="padding-right:10px">
+                                            <input type="number" id="txtBuildingAreaTo" class='TabOnEnter Textbox filterme' tabindex="31" style="font-size:small" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Project Name</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <input type="text" id="txtProjectNameSearch" class='TabOnEnter Textbox' tabindex="20" style="font-size:small" />
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Quantity </label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <input type="number" id="txtQuantityFrom" class='TabOnEnter Textbox filterme' tabindex="32" style="font-size:small" />
+                                        </td>
+
+                                        <td style="padding-right:10px"><label class="labelName" style="color:white"> To </label></td>
+                                        <td style="padding-right:10px">
+                                            <input type="number" id="txtQuantityTo" class='TabOnEnter Textbox filterme' tabindex="33" style="font-size:small" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Project Address</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <input type="text" id="txtProjectAddressSearch" class='TabOnEnter Textbox' tabindex="21" style="font-size:small" />
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Nominal </label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <input type="number" id="txtNominalFrom" class='TabOnEnter Textbox filterme' tabindex="34" style="font-size:small" />
+                                        </td>
+
+                                        <td style="padding-right:10px"><label class="labelName" style="color:white"> To </label></td>
+                                        <td style="padding-right:10px">
+                                            <input type="number" id="txtNominalTo" class='TabOnEnter Textbox filterme' tabindex="35" style="font-size:small" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Province</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlProvinceSearch" class='TabOnEnter Textbox' tabindex="22" style="font-size:small" onchange="selectSearchCity();">
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Project Periode Start From </label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <input type="text" id="txtProjectPeriodStartFrom" class='TabOnEnter Textbox datepicker' tabindex="36" style="width:90%; font-size:small" title='D-MMM-YYYY' />
+                                        </td>
+
+                                        <td style="padding-right:10px"><label class="labelName" style="color:white"> To </label></td>
+                                        <td style="padding-right:10px">
+                                            <input type="text" id="txtProjectPeriodStartTo" class='TabOnEnter Textbox datepicker' tabindex="37" style="width:90%; font-size:small" title='D-MMM-YYYY' />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">City</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlCitySearch" class='TabOnEnter Textbox' tabindex="23" style="font-size:small" >
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Project Periode End From </label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <input type="text" id="txtProjectPeriodEndFrom" class='TabOnEnter Textbox datepicker' tabindex="38" style="width:90%; font-size:small" title='D-MMM-YYYY' />
+                                        </td>
+
+                                        <td style="padding-right:10px"><label class="labelName" style="color:white"> To </label></td>
+                                        <td style="padding-right:10px">
+                                            <input type="text" id="txtProjectPeriodEndTo" class='TabOnEnter Textbox datepicker' tabindex="39" style="width:90%; font-size:small" title='D-MMM-YYYY' />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Developer</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlDeveloperSearch" class='TabOnEnter Textbox' tabindex="24" style="font-size:small">
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Contractor</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlContractorSearch" class='TabOnEnter Textbox' tabindex="40" style="font-size:small" >
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Consultant</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlConsultantSearch" class='TabOnEnter Textbox' tabindex="25" style="font-size:small" >
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Management Construction</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlManagementConstructionSearch" class='TabOnEnter Textbox' tabindex="41" style="font-size:small" >
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Project Manager</label>
+                                        </td>
+                                        <td style="padding-right:10px">                                           
+                                            <input type="text" id="txtProjectManagerSearch" class='TabOnEnter Textbox' tabindex="26" style="font-size:small" />
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Supplier Name</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlSupplierNameSearch" class='TabOnEnter Textbox' tabindex="42" style="font-size:small" >
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Contract No</label>
+                                        </td>
+                                        <td style="padding-right:10px">                                                                
+                                            <input type="text" id="txtContractNoSearch" class='TabOnEnter Textbox' tabindex="27" style="font-size:small" />
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Status Project</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlStatusProjectSearch" class='TabOnEnter Textbox' tabindex="43" style="font-size:small" >
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Sales</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlSalesSearch" class='TabOnEnter Textbox' tabindex="28" style="font-size:small" >
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">PIC</label>
+                                        </td>
+                                        <td style="padding-right:10px">
+                                            <select id="ddlPICSearch" class='TabOnEnter Textbox' tabindex="44" style="font-size:small" >
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px">
+                                            <label class="labelName" style="color:white">Note</label>
+                                        </td>
+                                        <td style="padding-right:10px">                          
+                                            <input type="text" id="txtNoteSearch" class='TabOnEnter Textbox' tabindex="29" style="font-size:small" />
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="right">
+                                            <input id="btnSearch" type="button" value="Search" class="buttonDelete Button" onclick="addSearchData();" />
+                                        </td>
+                                    </tr>                                   
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <!-- Data Table -->
+                    <tr>
+                        <td>
+                            <div>
+                                <table id="datatable" border="1" class="display" align="center" style="text-align:center" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Created Date</th>
+                                            <th>Project Name</th>
+                                            <th>Project Address</th>
+                                            <th>Created User</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <!-- Map -->
+                    <tr>
+                        <td style="width:200px;height:600px">
+                            <div style="width:100%;height:100%;">
+                                <div id="dvMap" class="map" style="width:100%;height:100%;"></div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <input type="button" value="Add New Project" class="buttonDelete Button" id="btnAdd" onclick="setEmptyField();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr id="formProject">
+                        <td>
+                            <div class="FormUser">
+                                <table border="0" align="center" style="margin-top:10px;">
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <label id="lblWarning" class="labelName" style="color:red; display:none">Tidak boleh ada data yang kosong</label> 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Project Category</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlProjectCategory" class='TabOnEnter Textbox' tabindex="1" style="width:300px; font-size:small"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Project Name</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtProjectName" class='TabOnEnter Textbox' tabindex="2" style="width:300px; font-size:small" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Project Address</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtProjectAddress" class='TabOnEnter Textbox' tabindex="3" style="width:300px; font-size:small" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Province</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlProvince" class='TabOnEnter Textbox' tabindex="4" style="width:300px; font-size:small" onchange="selectCity();"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">City</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlCity" class='TabOnEnter Textbox' tabindex="5" style="width:300px; font-size:small"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Building Area (sqm)</label>
+                                        </td>
+                                        <td>
+                                            <input type="number" id="txtBuildingArea" class='TabOnEnter Textbox filterme' tabindex="6" style="width:300px; font-size:small" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Quantity</label>
+                                        </td>
+                                        <td>
+                                            <input type="number" id="txtQuantity" class='TabOnEnter Textbox filterme' tabindex="7" style="width:300px; font-size:small" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Nominal</label>
+                                        </td>
+                                        <td>
+                                            <input type="number" id="txtNominal" class='TabOnEnter Textbox filterme' tabindex="8" style="width:300px; font-size:small" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Developer</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlDeveloper" class='TabOnEnter Textbox' tabindex="9" style="width:300px; font-size:small"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Project Manager</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtProjectManager" class='TabOnEnter Textbox' tabindex="10" style="width:300px; font-size:small" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Contractor</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlContractor" class='TabOnEnter Textbox' tabindex="11" style="width:300px; font-size:small"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Consultant</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlConsultant" class='TabOnEnter Textbox' tabindex="12" style="width:300px; font-size:small"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Management Construction</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlManagementConstruction" class='TabOnEnter Textbox' tabindex="13" style="width:300px; font-size:small"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Project Periode</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtProjectPeriodStart" class='TabOnEnter Textbox datepicker' tabindex="14" style="width:127px; font-size:small" title='D-MMM-YYYY' />
+                                            <label class="labelRangeDate"> - </label>
+                                            <input type="text" id="txtProjectPeriodEnd" class='TabOnEnter Textbox datepicker' tabindex="15" style="width:127px; font-size:small" title='D-MMM-YYYY' />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Supplier Name</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlSupplier" class='TabOnEnter Textbox' tabindex="16" style="width:300px; font-size:small"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Status Project</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlStatus" class='TabOnEnter Textbox' tabindex="17" style="width:300px; font-size:small"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Note</label>
+                                        </td>
+                                        <td>
+                                            <textarea rows="4" id="txtNote" class="TabOnEnter Textarea" tabindex="18" style="width:300px; font-size:small"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Image</label>
+                                        </td>
+                                        <td>
+                                            <div id='TextBoxesGroup1'>
+                                                <div id="TextBoxDiv1" style="display:none">
+                                                    <input type="file" id="imageFile1" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName1" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload1" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                                <div id="TextBoxDiv2" style="display:none">
+                                                    <input type="file" id="imageFile2" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName2" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload2" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                                <div id="TextBoxDiv3" style="display:none">
+                                                    <input type="file" id="imageFile3" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName3" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload3" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                                <div id="TextBoxDiv4" style="display:none">
+                                                    <input type="file" id="imageFile4" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName4" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload4" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                                <div id="TextBoxDiv5" style="display:none">
+                                                    <input type="file" id="imageFile5" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName5" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload5" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                                <div id="TextBoxDiv6" style="display:none">
+                                                    <input type="file" id="imageFile6" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName6" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload6" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                                <div id="TextBoxDiv7" style="display:none">
+                                                    <input type="file" id="imageFile7" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName7" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload7" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                                <div id="TextBoxDiv8" style="display:none">
+                                                    <input type="file" id="imageFile8" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName8" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload8" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                                <div id="TextBoxDiv9" style="display:none">
+                                                    <input type="file" id="imageFile9" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName9" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload9" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                                <div id="TextBoxDiv10" style="display:none">
+                                                    <input type="file" id="imageFile10" accept="image/*" value="#" /><br />
+                                                    <label id="imageFileName10" class="labelName" style="display:none"></label>
+                                                    <img id="imageUpload10" class="imageUpload" style="display:none" src="" />
+                                                </div>
+                                            </div>
+                                            <input type='button' value='Add Image' id='addButton'>
+                                            <!--<input type='button' value='Remove Image' id='removeButton'>-->
+                                            <!--<input type='button' value='Get TextBox Value' id='getButtonValue'>-->
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="15"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="button" value="   Add   " class="buttonDelete Button" id="btnAdd" onclick="checkField();" />
+                                    </td>
+                                    <td width="10"></td>
+                                    <td>
+                                        <input type="button" value="Update" class="buttonSave Button" id="btnUpdate" onclick="checkField();" />
+                                    </td>
+                                    <td width="10"></td>
+                                    <td>
+                                        <input type="button" value="Delete" class="buttonDelete Button" id="btnDelete" onclick="validasiDelete();" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Loading Gif-->
+            <div class="loader" id="loading"></div>
+
+            <div class="content" style="margin-top:1%;">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" id="AboutUs" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" id="ContactUs" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+    <script src="js/classie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js2/classie.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        (function () {
+            var menuEl = document.getElementById('ml-menu'),
+                mlmenu = new MLMenu(menuEl, {
+                    backCtrl: false
+                });
+        })();
+    </script>
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script src="js/jquery-impromptu.min.js"></script>
+    <link rel='stylesheet' type='text/css' href="CSS/jquery-impromptu.css" />
+
+    <!--loading gif-->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        })
+    </script>
+    <script>
+    var token;
+    var userId;
+    var userName;
+    var userPassword;
+    var userMail;
+    var userType;
+
+    var counter = 1;
+
+    var map;
+    var markers = [];
+    var geocoder;
+
+    //IMAGE FILE BROWSE
+    var fileImage1;
+    var fileImage2;
+    var fileImage3;
+    var fileImage4;
+    var fileImage5;
+    var fileImage6;
+    var fileImage7;
+    var fileImage8;
+    var fileImage9;
+    var fileImage10;
+
+    //WEB API URI
+        //var uri = 'http://localhost:5842/api/Project';
+        //var uriProjectCategory = 'http://localhost:5842/api/ProjectCategories';
+        //var uriProvince = 'http://localhost:5842/api/Provinsi';
+        //var uriCity = 'http://localhost:5842/api/City';
+        //var uriSupplier = 'http://localhost:5842/api/Supplier';
+        //var uriCompetitor = 'http://localhost:5842/api/Competitor';
+        //var uriStatusProject = 'http://localhost:5842/api/StatusProject';
+        //var uriSales = 'http://localhost:5842/api/Sales';
+        //var uriImage = 'http://localhost:5842/api/UploadFile';
+        //var uriBase = 'http://localhost:5842/';
+
+        var uri = 'http://mastersteel.azurewebsites.net/api/Project';
+        var uriProjectCategory = 'http://mastersteel.azurewebsites.net/api/ProjectCategories';
+        var uriProvince = 'http://mastersteel.azurewebsites.net/api/Provinsi';
+        var uriCity = 'http://mastersteel.azurewebsites.net/api/City';
+        var uriSupplier = 'http://mastersteel.azurewebsites.net/api/Supplier';
+        var uriCompetitor = 'http://mastersteel.azurewebsites.net/api/Competitor';
+        var uriStatusProject = 'http://mastersteel.azurewebsites.net/api/StatusProject';
+        var uriSales = 'http://mastersteel.azurewebsites.net/api/Sales';
+        var uriImage = 'http://mastersteel.azurewebsites.net/api/UploadFile';
+        var uriBase = 'http://mastersteel.azurewebsites.net/';
+
+        //IMAGE PATH NEWS URI
+        var imageUri = 'http://168.63.167.70/MasterSteel/ProjectMap/Project/Images/'
+
+    $(document).ready(function () {
+        token = sessionStorage.getItem('Token');
+        userId = sessionStorage.getItem('UserID');
+        userName = sessionStorage.getItem('UserName');
+        userPassword = sessionStorage.getItem('UserPassword');
+        userMail = sessionStorage.getItem('UserMail');
+        userType = sessionStorage.getItem('UserType');
+
+        $("#hiddenToken").val(token);
+        $("#hiddenUserId").val(userId);
+        $("#hiddenUserName").val(userName);
+        $("#hiddenUserPassword").val(userPassword);
+        $("#hiddenUserMail").val(userMail);
+        $("#hiddenUserType").val(userType);
+
+        if (userId == null) {
+            var url = "Login.html";
+            window.location.href = url;
+        }
+
+        if (userType == '1') {
+            $("#MasterUsers").hide();
+        }
+
+        $("#btnAdvancedSearch").click(function () {
+            $("#formAdvancedSearch").toggle();
+        });
+
+        //ON FORM LOAD - GET NEWS DATA
+        $.getJSON(uri + '/GetAllProjectList')
+            .done(function (data) {
+
+                initializeMap(data);
+
+                // On success, 'data' contains a list of products.
+                $('#datatable').DataTable(
+                    {
+                        data: data,
+                        columns: [
+                            { data: 'CreatedAt' },
+                            { data: 'ProjectName' },
+                            { data: 'ProjectAddress' },
+                            { data: 'UserName' }
+                        ]
+                    }
+                    );
+
+                table = $('#datatable').DataTable();
+
+                //function row table selected
+                $('#datatable tbody').on('click', 'tr', function () {
+
+                    if ($(this).hasClass('selected')) {
+                        $(this).removeClass('selected');
+                    }
+                    else {
+                        table.$('tr.selected').removeClass('selected');
+                        $(this).addClass('selected');
+                    }
+
+                    //show details data
+                    var dataRow = table.row(this).data();
+                    getProjectById(dataRow.ProjectIDMobile);
+                    setEmptyField();
+                });
+
+            });
+
+        loadProjectCategory();
+        loadProvince();
+        loadDeveloper();
+        loadContractor();
+        loadConsultant();
+        loadManagementConstruction();
+        loadSupplier();
+        loadStatus();
+
+        function loadProjectCategory() {
+            $.getJSON(uriProjectCategory + '/GetProjectCategories/values?token=' + token)
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlProjectCategory")
+                              .append($("<option></option>")
+                              .attr("value", item.ProjectCategoriesID)
+                              .text(item.Description));
+                    });
+                });
+        }
+
+        function loadProvince() {
+            $.getJSON(uriProvince + '/GetProvinsiByCountryID/values?token=' + token + '&countryID=N01')
+            .done(function (data) {
+                var dataProvince = '';
+                var provinceId;
+                $.each(data, function (k, item) {
+                    $("#ddlProvince")
+                          .append($("<option></option>")
+                          .attr("value", item.ProvinsiID)
+                          .text(item.Description));
+
+                    if (k == 0) {
+                        provinceId = item.ProvinsiID;
+                        $('#ddlProvince').change(function () {
+                            loadCity($(this).find(':selected').val())
+                        })
+                    }
+                });
+                loadCity(provinceId);
+            });
+        }
+
+        function loadCity(provinceId) {
+            $("#ddlCity").children().remove();
+            $.getJSON(uriCity + '/GetCityByProvinsiID/values?token=' + token + '&provinsiID=' + provinceId)
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlCity")
+                              .append($("<option></option>")
+                              .attr("value", item.CityID)
+                              .text(item.Description));
+                    });
+                });
+        }
+
+        function loadDeveloper() {
+            $.getJSON(uriSupplier + '/GetSupplierByTypeSupplier/values?token=' + token + '&typeSupplier=10')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlDeveloper")
+                              .append($("<option></option>")
+                              .attr("value", item.Supl_ID)
+                              .text(item.Supl_Name));
+                    });
+                });
+        }
+
+        function loadContractor() {
+            $.getJSON(uriSupplier + '/GetSupplierByTypeSupplier/values?token=' + token + '&typeSupplier=11')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlContractor")
+                              .append($("<option></option>")
+                              .attr("value", item.Supl_ID)
+                              .text(item.Supl_Name));
+                    });
+                });
+        }
+
+        function loadConsultant() {
+            $.getJSON(uriSupplier + '/GetSupplierByTypeSupplier/values?token=' + token + '&typeSupplier=12')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlConsultant")
+                              .append($("<option></option>")
+                              .attr("value", item.Supl_ID)
+                              .text(item.Supl_Name));
+                    });
+                });
+        }
+
+        function loadManagementConstruction() {
+            $.getJSON(uriSupplier + '/GetSupplierByTypeSupplier/values?token=' + token + '&typeSupplier=13')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlManagementConstruction")
+                              .append($("<option></option>")
+                              .attr("value", item.Supl_ID)
+                              .text(item.Supl_Name));
+                    });
+                });
+        }
+
+        function loadSupplier() {
+            $.getJSON(uriCompetitor + '/GetCompetitorByType/values?token=' + token + '&type=2')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlSupplier")
+                              .append($("<option></option>")
+                              .attr("value", item.CompetitorID)
+                              .text(item.Description));
+                    });
+                });
+        }
+
+        function loadStatus() {
+            $.getJSON(uriStatusProject + '/GetStatusProjectByType/values?token=' + token + '&type=1')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlStatus")
+                              .append($("<option></option>")
+                              .attr("value", item.StatusProjectID)
+                              .text(item.Description));
+                    });
+                });
+        }
+
+        loadSearchProjectCategory();
+        loadSearchProvince();
+        loadSearchDeveloper();
+        loadSearchContractor();
+        loadSearchConsultant();
+        loadSearchManagementConstruction();
+        loadSearchSupplier();
+        loadSearchStatus();
+        loadSearchSales();
+        loadSearchPIC();
+
+        function loadSearchProjectCategory() {
+            $.getJSON(uriProjectCategory + '/GetProjectCategories/values?token=' + token)
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlProjectCategorySearch")
+                              .append($("<option></option>")
+                              .attr("value", item.ProjectCategoriesID)
+                              .text(item.Description));
+                    });
+                });
+        }
+
+        function loadSearchProvince() {
+            $.getJSON(uriProvince + '/GetProvinsiByCountryID/values?token=' + token + '&countryID=N01')
+            .done(function (data) {
+                var dataProvince = '';
+                var provinceId;
+                $.each(data, function (k, item) {
+                    $("#ddlProvinceSearch")
+                          .append($("<option></option>")
+                          .attr("value", item.ProvinsiID)
+                          .text(item.Description));
+
+                    if (k == 0) {
+                        provinceId = item.ProvinsiID;
+                        $('#ddlProvinceSearch').change(function () {
+                            loadCity($(this).find(':selected').val())
+                        })
+                    }
+                });
+                //loadSearchCity(provinceId);
+            });
+        }
+
+        //function loadSearchCity(provinceId) {
+        //    $("#ddlCitySearch").children().remove();
+        //    $.getJSON(uriCity + '/GetCityByProvinsiID/values?token=' + token + '&provinsiID=' + provinceId)
+        //        .done(function (data) {
+        //            var dataDeveloper = '';
+        //            // On success, 'data' contains a list of products.
+        //            $.each(data, function (k, item) {
+        //                $("#ddlCitySearch")
+        //                      .append($("<option></option>")
+        //                      .attr("value", item.CityID)
+        //                      .text(item.Description));
+        //            });
+        //        });
+        //}
+
+        function loadSearchDeveloper() {
+            $.getJSON(uriSupplier + '/GetSupplierByTypeSupplier/values?token=' + token + '&typeSupplier=10')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlDeveloperSearch")
+                              .append($("<option></option>")
+                              .attr("value", item.Supl_ID)
+                              .text(item.Supl_Name));
+                    });
+                });
+        }
+
+        function loadSearchContractor() {
+            $.getJSON(uriSupplier + '/GetSupplierByTypeSupplier/values?token=' + token + '&typeSupplier=11')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlContractorSearch")
+                              .append($("<option></option>")
+                              .attr("value", item.Supl_ID)
+                              .text(item.Supl_Name));
+                    });
+                });
+        }
+
+        function loadSearchConsultant() {
+            $.getJSON(uriSupplier + '/GetSupplierByTypeSupplier/values?token=' + token + '&typeSupplier=12')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlConsultantSearch")
+                              .append($("<option></option>")
+                              .attr("value", item.Supl_ID)
+                              .text(item.Supl_Name));
+                    });
+                });
+        }
+
+        function loadSearchManagementConstruction() {
+            $.getJSON(uriSupplier + '/GetSupplierByTypeSupplier/values?token=' + token + '&typeSupplier=13')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlManagementConstructionSearch")
+                              .append($("<option></option>")
+                              .attr("value", item.Supl_ID)
+                              .text(item.Supl_Name));
+                    });
+                });
+        }
+
+        function loadSearchSupplier() {
+            $.getJSON(uriCompetitor + '/GetCompetitorByType/values?token=' + token + '&type=2')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlSupplierNameSearch")
+                              .append($("<option></option>")
+                              .attr("value", item.CompetitorID)
+                              .text(item.Description));
+                    });
+                });
+        }
+
+        function loadSearchStatus() {
+            $.getJSON(uriStatusProject + '/GetStatusProjectByType/values?token=' + token + '&type=1')
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlStatusProjectSearch")
+                              .append($("<option></option>")
+                              .attr("value", item.StatusProjectID)
+                              .text(item.Description));
+                    });
+                });
+        }
+
+        function loadSearchSales() {
+            $.getJSON(uriSales + '/GetSales/values?token=' + token)
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlSalesSearch")
+                              .append($("<option></option>")
+                              .attr("value", item.SalesID)
+                              .text(item.Penjual));
+                    });
+                });
+        }
+
+        function loadSearchPIC() {
+            $.getJSON(uriSales + '/GetSales/values?token=' + token)
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlPICSearch")
+                              .append($("<option></option>")
+                              .attr("value", item.SalesID)
+                              .text(item.Penjual));
+                    });
+                });
+        }
+
+        $("#addButton").click(function () {            
+
+            if (counter > 10) {
+                alert("Only 10 images allow");
+                return false;
+            }
+
+            $("#TextBoxDiv" + counter).show();
+
+            counter++;
+        });
+
+        $("#removeButton").click(function () {
+            if (counter == 1) {
+                alert("No more image to remove");
+                return false;
+            }
+
+            counter--;
+
+            $("#TextBoxDiv" + counter).remove();
+
+        });
+
+        $("#getButtonValue").click(function () {
+
+            var msg = '';
+            for (i = 1; i < counter; i++) {
+                msg += "\n Textbox #" + i + " : " + $('#imageFileName' + i).text();
+            }
+            alert(msg);
+        });
+
+        $('#imageFile1').change(function (event) {
+            readURLFile1(this);
+        });
+
+        function readURLFile1(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload1').show();
+
+                    $('#imageFileName1').text(input.files[0].name);
+                    fileImage1 = input.files[0];
+                    $('#imageUpload1').attr('src', this.result);
+                    $('#imageUpload1').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $('#imageFile2').change(function (event) {
+            readURLFile2(this);
+        });
+
+        function readURLFile2(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload2').show();
+
+                    $('#imageFileName2').text(input.files[0].name);
+                    fileImage2 = input.files[0];
+                    $('#imageUpload2').attr('src', this.result);
+                    $('#imageUpload2').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $('#imageFile3').change(function (event) {
+            readURLFile3(this);
+        });
+
+        function readURLFile3(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload3').show();
+
+                    $('#imageFileName3').text(input.files[0].name);
+                    fileImage3 = input.files[0];
+                    $('#imageUpload3').attr('src', this.result);
+                    $('#imageUpload3').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('#imageFile4').change(function (event) {
+            readURLFile4(this);
+        });
+
+        function readURLFile4(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload4').show();
+
+                    $('#imageFileName4').text(input.files[0].name);
+                    fileImage4 = input.files[0];
+                    $('#imageUpload4').attr('src', this.result);
+                    $('#imageUpload4').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('#imageFile5').change(function (event) {
+            readURLFile5(this);
+        });
+
+        function readURLFile5(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload5').show();
+
+                    $('#imageFileName5').text(input.files[0].name);
+                    fileImage5 = input.files[0];
+                    $('#imageUpload5').attr('src', this.result);
+                    $('#imageUpload5').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('#imageFile6').change(function (event) {
+            readURLFile6(this);
+        });
+
+        function readURLFile6(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload6').show();
+
+                    $('#imageFileName6').text(input.files[0].name);
+                    fileImage6 = input.files[0];
+                    $('#imageUpload6').attr('src', this.result);
+                    $('#imageUpload6').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('#imageFile7').change(function (event) {
+            readURLFile7(this);
+        });
+
+        function readURLFile7(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload7').show();
+
+                    $('#imageFileName7').text(input.files[0].name);
+                    fileImage7 = input.files[0];
+                    $('#imageUpload7').attr('src', this.result);
+                    $('#imageUpload7').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('#imageFile8').change(function (event) {
+            readURLFile8(this);
+        });
+
+        function readURLFile8(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload8').show();
+
+                    $('#imageFileName8').text(input.files[0].name);
+                    fileImage8 = input.files[0];
+                    $('#imageUpload8').attr('src', this.result);
+                    $('#imageUpload8').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('#imageFile9').change(function (event) {
+            readURLFile9(this);
+        });
+
+        function readURLFile9(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload9').show();
+
+                    $('#imageFileName9').text(input.files[0].name);
+                    fileImage9 = input.files[0];
+                    $('#imageUpload9').attr('src', this.result);
+                    $('#imageUpload9').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('#imageFile10').change(function (event) {
+            readURLFile10(this);
+        });
+
+        function readURLFile10(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#imageUpload10').show();
+
+                    $('#imageFileName10').text(input.files[0].name);
+                    fileImage10 = input.files[0];
+                    $('#imageUpload10').attr('src', this.result);
+                    $('#imageUpload10').attr('class', "imageUpload");
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $('.filterme').keypress(function(eve) {
+            $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+            if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+
+    });
+
+    function selectCity() {
+        var provinceId = $("#ddlProvince").val();
+
+        loadCity(provinceId);
+    }
+
+    function loadCity(provinceId) {
+        $("#ddlCity").children().remove();
+        $.getJSON(uriCity + '/GetCityByProvinsiID/values?token=' + token + '&provinsiID=' + provinceId)
+            .done(function (data) {
+                var dataDeveloper = '';
+                // On success, 'data' contains a list of products.
+                $.each(data, function (k, item) {
+                    $("#ddlCity")
+                          .append($("<option></option>")
+                          .attr("value", item.CityID)
+                          .text(item.Description));
+                });
+            });
+    }
+
+    function selectSearchCity() {
+        var provinceId = $("#ddlProvinceSearch").val();
+
+        loadSearchCity(provinceId);
+    }
+
+    function loadSearchCity(provinceId) {
+        $("#ddlCitySearch").children().remove();
+        $.getJSON(uriCity + '/GetCityByProvinsiID/values?token=' + token + '&provinsiID=' + provinceId)
+            .done(function (data) {
+                var dataDeveloper = '';
+                // On success, 'data' contains a list of products.
+                $.each(data, function (k, item) {
+                    $("#ddlCitySearch")
+                          .append($("<option></option>")
+                          .attr("value", item.CityID)
+                          .text(item.Description));
+                });
+            });
+    }
+
+    function getProjectById(ProjectIDMobile) {
+        $.getJSON(uri + '/GetProjectById/values?token=' + token + '&projectIDMobile=' + ProjectIDMobile)
+            .done(function (data) {
+
+                clearMarkers(null);
+                $("#lblWarning").hide();
+
+                $("#hiddenId").val(data.ProjectIDMobile);
+                $("#ddlProjectCategory").val(data.ProjectCategoryID);
+                $("#txtProjectName").val(data.ProjectName);
+                $("#txtProjectAddress").val(data.ProjectAddress);
+
+                var provinceId = data.ProvinsiID;
+                if (provinceId != "") {
+                    loadCity(provinceId);
+                }
+
+                $("#ddlProvince").val(data.ProvinsiID);
+                $("#ddlCity").val(data.CityID);
+                $("#txtBuildingArea").val(data.BuildingArea);
+                $("#txtQuantity").val(data.Quantity);
+                $("#txtNominal").val(data.Nominal);
+                $("#ddlDeveloper").val(data.DeveloperID);
+                $("#txtProjectManager").val(data.ProjectManager);
+                $("#ddlContractor").val(data.KontraktorID);
+                $("#ddlConsultant").val(data.ConsultantID);
+                $("#ddlManagementConstruction").val(data.ManagementKonstruksiID);
+                $("#txtProjectPeriodStart").val(data.ProjectPeriodStart);
+                $("#txtProjectPeriodEnd").val(data.ProjectPeriodEnd);
+                $("#ddlSupplier").val(data.SupplierID);
+                $("#ddlStatus").val(data.StatusProject);
+                $("#txtNote").val(data.Note);
+                $("#hiddenLatitude").val(data.Latitude);
+                $("#hiddenLongitude").val(data.Longitude);
+
+                var str = data.Images;
+                if (str != "") {
+                    var res = str.slice(0, -1);
+                    var mystring = res.split(":");
+                    var totalImages = mystring.length;
+                    counter = totalImages - 1;
+
+                    for (i = 0; i < counter; i++) {
+                        var number = i + 1;
+
+                        $('#TextBoxDiv' + number).show();
+                        $('#imageUpload' + number).show();
+
+                        $('#imageFileName' + number).text(mystring[number]);
+
+                        var imageFilePath = imageUri + mystring[number];
+                        $('#imageUpload' + number).attr('src', imageFilePath);
+                        $('#imageUpload' + number).attr('class', "imageUpload");
+                    }
+                }
+
+
+                if ((data.Latitude != 0) && (data.Longitude != 0)) {
+                    var statusProject = data.StatusProject;
+
+                    var LatLng = new google.maps.LatLng(data.Latitude, data.Longitude);
+                    showMarker(LatLng, statusProject);
+                }
+
+
+            })
+            .fail(function (jqXHR, textStatus, err) {
+                alert("Error : " + err.text);
+            });
+    }
+
+    function checkField() {
+        //if ($("#txtProjectName").val() == '' || $("#ddlProjectCategory").val() == null || $("#ddlProvince").val() == null || $("#ddlCity").val() == null
+        //    || $("#ddlDeveloper").val() == null || $("#ddlContractor").val() == null || $("#ddlConsultant").val() == null || $("#ddlManagementConstruction").val() == null
+        //    || $("#ddlSupplier").val() == null || $("#ddlStatus").val() == null) {
+        //    $("#lblWarning").show();
+        //}
+
+        if ($("#txtProjectName").val() == '') {
+            document.getElementById('lblUserIdWarning').innerHTML = 'User Id tidak boleh kosong';
+            $("#lblWarning").text("Project Name tidak boleh kosong");
+        }
+        if ($("#txtProjectName").val() != '') {
+            $("#lblWarning").text("");
+        }
+        if ($("#txtProjectName").val() != '') {
+            validasiSave();
+        }
+    }
+
+    function validasiSave() {
+        $.prompt("Apakah data anda sudah benar?", {
+            title: "Save Data",
+            buttons: { "Ya": true, "Tidak": false },
+            submit: function (e, v, m, f) {
+
+                if (v) {
+                    addUpdateData();
+                }
+
+                console.log("Value clicked was: " + v);
+            }
+        });
+    }
+
+    function addUpdateData() {
+        var token = $("#hiddenToken").val();
+        var projectCategoryID = $("#ddlProjectCategory").val();
+        var projectIDMobile = $("#hiddenId").val();
+        var projectName = $("#txtProjectName").val();
+        var projectAddress = $("#txtProjectAddress").val();
+        var provinsiID = $("#ddlProvince").val();
+        var cityID = $("#ddlCity").val();
+        var buildingArea = $("#txtBuildingArea").val();
+        var quantity = $("#txtQuantity").val();
+        var nominal = $("#txtNominal").val();
+        var developerID = $("#ddlDeveloper").val();
+        var projectManager = $("#txtProjectManager").val();
+        var kontraktorID = $("#ddlContractor").val();
+        var consultantID = $("#ddlConsultant").val();
+        var managementKonstruksiID = $("#ddlManagementConstruction").val();
+        var projectPeriodStart = $("#txtProjectPeriodStart").val();
+        var projectPeriodEnd = $("#txtProjectPeriodEnd").val();
+        var supplierID = $("#ddlSupplier").val();
+        var statusProject = $("#ddlStatus").val();
+        var note = $("#txtNote").val();
+        var latitude = $("#hiddenLatitude").val();
+        var longitude = $("#hiddenLongitude").val();
+        var userUpdateID = $("#hiddenUserId").val();
+        var userCreateID = $("#hiddenUserId").val();
+
+        if (projectCategoryID == null) {
+            projectCategoryID = '';
+        }
+        if (provinsiID == null) {
+            provinsiID = '';
+        }
+        if (cityID == null) {
+            cityID = '';
+        }
+        if (developerID == null) {
+            developerID = '';
+        }
+        if (kontraktorID == null) {
+            kontraktorID = '';
+        }
+        if (consultantID == null) {
+            consultantID = '';
+        }
+        if (managementKonstruksiID == null) {
+            managementKonstruksiID = '';
+        }
+        if (supplierID == null) {
+            supplierID = '';
+        }
+        if (statusProject == null) {
+            statusProject = '';
+        }
+
+        if (fileImage1 != null) {
+            var imagePath = $("#imageFileName1").text();
+
+            var status;
+            status = UploadImage1(imagePath);
+        }
+
+        if (fileImage2 != null) {
+            var imagePath = $("#imageFileName2").text();
+
+            var status;
+            status = UploadImage2(imagePath);
+        }
+
+        if (fileImage3 != null) {
+            var imagePath = $("#imageFileName3").text();
+
+            var status;
+            status = UploadImage3(imagePath);
+        }
+
+        if (fileImage4 != null) {
+            var imagePath = $("#imageFileName4").text();
+
+            var status;
+            status = UploadImage4(imagePath);
+        }
+
+        if (fileImage5 != null) {
+            var imagePath = $("#imageFileName5").text();
+
+            var status;
+            status = UploadImage5(imagePath);
+        }
+
+        if (fileImage6 != null) {
+            var imagePath = $("#imageFileName6").text();
+
+            var status;
+            status = UploadImage6(imagePath);
+        }
+
+        if (fileImage7 != null) {
+            var imagePath = $("#imageFileName7").text();
+
+            var status;
+            status = UploadImage7(imagePath);
+        }
+
+        if (fileImage8 != null) {
+            var imagePath = $("#imageFileName8").text();
+
+            var status;
+            status = UploadImage8(imagePath);
+        }
+
+        if (fileImage9 != null) {
+            var imagePath = $("#imageFileName9").text();
+
+            var status;
+            status = UploadImage9(imagePath);
+        }
+
+        if (fileImage10 != null) {
+            var imagePath = $("#imageFileName10").text();
+
+            var status;
+            status = UploadImage10(imagePath);
+        }
+
+        var msg = '';
+        for (i = 1; i < counter; i++) {
+            msg += $('#imageFileName' + i).text() + ':';
+        }
+
+        var images = 'Images:' + msg;
+
+        if (projectIDMobile == "") {
+            var today = new Date();
+            var dd = today.getDate();
+            var MM = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+            var hh = today.getHours();
+            var mm = today.getMinutes();
+            var ss = today.getSeconds();
+
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+
+            if (MM < 10) {
+                MM = '0' + MM
+            }
+
+            if (hh < 10) {
+                hh = '0' + hh
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+
+            if (ss < 10) {
+                ss = '0' + ss
+            }
+
+            today = mm + '/' + dd + '/' + yyyy;
+            today = 'PRJ_' + yyyy + MM + dd + '_' + hh + mm + ss;
+
+            projectIDMobile = today;
+
+            addData(token, projectCategoryID, projectIDMobile, projectName, projectAddress, provinsiID, cityID, buildingArea, quantity, nominal, developerID, projectManager, kontraktorID,
+            consultantID, managementKonstruksiID, projectPeriodStart, projectPeriodEnd, supplierID, statusProject, note, latitude, longitude, images, userCreateID);
+        }
+        else {
+            updateData(token, projectCategoryID, projectIDMobile, projectName, projectAddress, provinsiID, cityID, buildingArea, quantity, nominal, developerID, projectManager, kontraktorID,
+            consultantID, managementKonstruksiID, projectPeriodStart, projectPeriodEnd, supplierID, statusProject, note, latitude, longitude, images, userUpdateID);
+        }
+
+        setEmptyField();
+
+    }
+
+    function addData(token, projectCategoryID, projectIDMobile, projectName, projectAddress, provinsiID, cityID, buildingArea, quantity, nominal, developerID, projectManager,
+                    kontraktorID, consultantID, managementKonstruksiID, projectPeriodStart, projectPeriodEnd, supplierID, statusProject, note, latitude, longitude,
+                    images, userCreateID) {
+        $("#loading").show(); //show loading
+        $("#lblWarning").hide();
+        table.destroy();
+        var userData = {
+            token: token, projectCategoryID: projectCategoryID, projectIDMobile: projectIDMobile, projectName: projectName, projectAddress: projectAddress, provinsiID: provinsiID,
+            cityID: cityID, buildingArea: buildingArea, quantity: quantity, nominal: nominal, developerID: developerID, projectManager: projectManager,
+            kontraktorID: kontraktorID, consultantID: consultantID, managementKonstruksiID: managementKonstruksiID, projectPeriodStart: projectPeriodStart,
+            projectPeriodEnd: projectPeriodEnd, supplierID: supplierID, statusProject: statusProject, note: note, latitude: latitude, longitude: longitude,
+            images: images, userCreateID: userCreateID
+        }
+        $.ajax({
+            type: 'POST',
+            url: uri + '/SaveProject',
+            data: JSON.stringify(userData),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                $.getJSON(uri + '/GetAllProjectList')
+                    .done(function (data) {
+
+                        //Init Map
+                        initializeMap(data);
+
+                        // On success, 'data' contains a list of products
+                        $('#datatable').DataTable(
+                            {
+                                data: data,
+                                columns: [
+                                    { data: 'CreatedAt' },
+                                    { data: 'ProjectName' },
+                                    { data: 'ProjectAddress' },
+                                    { data: 'UserName' }
+                                ]
+                            }
+                            );
+                        table = $('#datatable').DataTable();
+                        //window.location.reload(true);
+                    });
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+    }
+
+    function updateData(token, projectCategoryID, projectIDMobile, projectName, projectAddress, provinsiID, cityID, buildingArea, quantity, nominal, developerID, projectManager,
+                        kontraktorID, consultantID, managementKonstruksiID, projectPeriodStart, projectPeriodEnd, supplierID, statusProject, note, latitude, longitude,
+                        images, userUpdateID) {
+        $("#loading").show(); //show loading
+        $("#lblWarning").hide();
+        table.destroy();
+        var userData = {
+            token: token, projectCategoryID: projectCategoryID, projectIDMobile: projectIDMobile, projectName: projectName, projectAddress: projectAddress, provinsiID: provinsiID,
+            cityID: cityID, buildingArea: buildingArea, quantity: quantity, nominal: nominal, developerID: developerID, projectManager: projectManager,
+            kontraktorID: kontraktorID, consultantID: consultantID, managementKonstruksiID: managementKonstruksiID, projectPeriodStart: projectPeriodStart,
+            projectPeriodEnd: projectPeriodEnd, supplierID: supplierID, statusProject: statusProject, note: note, latitude: latitude, longitude: longitude,
+            images: images, userUpdateID: userUpdateID
+        }
+        $.ajax({
+            type: 'PUT',
+            url: uri + '/EditProject',
+            data: JSON.stringify(userData),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                $.getJSON(uri + '/GetAllProjectList')
+                    .done(function (data) {
+
+                        //Init Map
+                        initializeMap(data);
+
+                        // On success, 'data' contains a list of products
+                        $('#datatable').DataTable(
+                            {
+                                data: data,
+                                columns: [
+                                    { data: 'CreatedAt' },
+                                    { data: 'ProjectName' },
+                                    { data: 'ProjectAddress' },
+                                    { data: 'UserName' }
+                                ]
+                            }
+                            );
+                        table = $('#datatable').DataTable();
+                        //window.location.reload(true);
+                    });
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+    }
+
+    function addSearchData() {
+        var token = $("#hiddenToken").val();
+        var projectCategoryID = $("#ddlProjectCategorySearch").val();
+        var projectName = $("#txtProjectNameSearch").val();
+        var projectAddress = $("#txtProjectAddressSearch").val();
+        var provinsiID = $("#ddlProvinceSearch").val();
+        var cityID = $("#ddlCitySearch").val();
+        var buildingAreaFrom = $("#txtBuildingAreaFrom").val();
+        var buildingAreaTo = $("#txtBuildingAreaTo").val();
+        var quantityFrom = $("#txtQuantityFrom").val();
+        var quantityTo = $("#txtQuantityTo").val();
+        var nominalFrom = $("#txtNominalFrom").val();
+        var nominalTo = $("#txtNominalTo").val();
+        var developerID = $("#ddlDeveloperSearch").val();
+        var projectManager = $("#txtProjectManagerSearch").val();
+        var kontraktorID = $("#ddlContractorSearch").val();
+        var consultantID = $("#ddlConsultantSearch").val();
+        var managementKonstruksiID = $("#ddlManagementConstructionSearch").val();
+        var projectPeriodStartFrom = $("#txtProjectPeriodStartFrom").val();
+        var projectPeriodStartTo = $("#txtProjectPeriodStartTo").val();
+        var projectPeriodEndFrom = $("#txtProjectPeriodEndFrom").val();
+        var projectPeriodEndTo = $("#txtProjectPeriodEndTo").val();
+        var supplierID = $("#ddlSupplierNameSearch").val();
+        var contractNo = $("#txtContractNoSearch").val();
+        var statusProject = $("#ddlStatusProjectSearch").val();
+        var note = $("#txtNoteSearch").val();
+        var salesID = $("#ddlSalesSearch").val();
+        var picID = $("#ddlPICSearch").val();
+
+        searchData(token, projectCategoryID, projectName, projectAddress, provinsiID, cityID, buildingAreaFrom, buildingAreaTo, quantityFrom, quantityTo, nominalFrom,
+            nominalTo, developerID, projectManager, kontraktorID, consultantID, managementKonstruksiID, projectPeriodStartFrom, projectPeriodStartTo, projectPeriodEndFrom,
+            projectPeriodEndTo, supplierID, contractNo, statusProject, note, salesID, picID);
+
+        setEmptyField();
+
+    }
+
+    function searchData(token, projectCategoryID, projectName, projectAddress, provinsiID, cityID, buildingAreaFrom, buildingAreaTo, quantityFrom, quantityTo, nominalFrom,
+            nominalTo, developerID, projectManager, kontraktorID, consultantID, managementKonstruksiID, projectPeriodStartFrom, projectPeriodStartTo, projectPeriodEndFrom,
+            projectPeriodEndTo, supplierID, contractNo, statusProject, note, salesID, picID) {
+
+        $("#loading").show(); //show loading
+        $("#lblWarning").hide();
+        table.destroy();
+        var userData = {
+            token: token, projectCategoryID: projectCategoryID, projectName: projectName, projectAddress: projectAddress, provinsiID: provinsiID, cityID: cityID,
+            buildingAreaFrom: buildingAreaFrom, buildingAreaTo: buildingAreaTo, quantityFrom: quantityFrom, quantityTo: quantityTo, nominalFrom: nominalFrom,
+            nominalTo: nominalTo, developerID: developerID, projectManager: projectManager, kontraktorID: kontraktorID, consultantID: consultantID,
+            managementKonstruksiID: managementKonstruksiID, projectPeriodStartFrom: projectPeriodStartFrom, projectPeriodStartTo: projectPeriodStartTo,
+            projectPeriodEndFrom: projectPeriodEndFrom, projectPeriodEndTo: projectPeriodEndTo, supplierID: supplierID, ContractNumber: contractNo, statusProject: statusProject,
+            note: note, salesID: salesID, picID: picID
+        }
+        $.ajax({
+            type: 'POST',
+            url: uri + '/GetSearchProject',
+            data: JSON.stringify([userData]),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                $("#formAdvancedSearch").hide();
+                
+                //Init Map
+                initializeMap(data);
+
+                // On success, 'data' contains a list of products
+                $('#datatable').DataTable(
+                    {
+                        data: data,
+                        columns: [
+                            { data: 'CreatedAt' },
+                            { data: 'ProjectName' },
+                            { data: 'ProjectAddress' },
+                            { data: 'UserName' }
+                        ]
+                    }
+                    );
+                table = $('#datatable').DataTable();
+                //window.location.reload(true);
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+    }
+
+    function validasiDelete() {
+        $.prompt("Apakah anda yakin ingin menghapus data ini?", {
+            title: "Delete Data",
+            buttons: { "Ya": true, "Tidak": false },
+            submit: function (e, v, m, f) {
+
+                if (v) {
+                    deleteData();
+                }
+
+                console.log("Value clicked was: " + v);
+            }
+        });
+    }
+
+    function deleting() {
+        table.row('.selected').remove().draw();
+    }
+
+    function deleteData() {
+        $("#loading").show(); //show loading
+        table.destroy();
+
+        var token = $("#hiddenToken").val();
+        var projectIDMobile = $('#hiddenId').val();
+
+        $.ajax({
+            type: 'Delete',
+            url: uri + '/DeleteProject/values?projectIDMobile=' + projectIDMobile + '&token=' + token,
+            success: function (data) {
+                $.getJSON(uri)
+                    .done(function (data) {
+                        // On success, 'data' contains a list of products
+                        $('#datatable').DataTable(
+                            {
+                                data: data,
+                                columns: [
+                                    { data: 'CreatedAt' },
+                                    { data: 'ProjectName' },
+                                    { data: 'ProjectAddress' },
+                                    { data: 'UserName' }
+                                ]
+                            });
+                        table = $('#datatable').DataTable();
+                        setEmptyField();
+                        window.location.reload(true);
+                    });
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+    }
+
+    function UploadImage(fileImage, fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage1(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage1);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage2(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage2);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage3(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage3);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage4(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage4);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage5(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage5);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage6(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage6);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage7(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage7);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage8(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage8);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage9(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage9);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function UploadImage10(fileToUpload) {
+        $("#loading").show(); //show loading
+
+        var status = '';
+        var data = new FormData();
+        data.append("UploadedImage", fileImage10);
+        data.append("ImageFileName", fileToUpload);
+
+        var urlUpload = uriImage + '/UploadFileImage';
+
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: urlUpload,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+
+        return status;
+    }
+
+    function setEmptyField() {
+        $("#hiddenId").val("");
+        $("#txtProjectName").val("");
+        $("#txtProjectAddress").val("");
+        $("#txtBuildingArea").val("");
+        $("#txtQuantity").val("");
+        $("#txtNominal").val("");
+        $("#txtProjectManager").val("");
+        $("#txtProjectPeriodStart").val("");
+        $("#txtProjectPeriodEnd").val("");
+        $("#txtNote").val("");
+        $("#hiddenLatitude").val("");
+        $("#hiddenLongitude").val("");
+
+        $('#imageFileName1').text('');
+        $('#imageUpload1').attr('src', '');
+        $('#imageUpload1').attr('class', '');
+        fileImage = null;
+
+        for (i = 2; i <= 10; i++) {
+            $("#TextBoxDiv" + i).hide();
+        }
+
+        clearMarkers();
+
+        $("#txtBuildingAreaFrom").val("");
+        $("#txtBuildingAreaTo").val("");
+        $("#txtProjectNameSearch").val("");
+        $("#txtQuantityFrom").val("");
+        $("#txtQuantityTo").val("");
+        $("#txtProjectAddressSearch").val("");
+        $("#txtNominalFrom").val("");
+        $("#txtNominalTo").val("");
+        $("#txtProjectPeriodStartFrom").val("");
+        $("#txtProjectPeriodStartTo").val("");
+        $("#txtProjectPeriodEndFrom").val("");
+        $("#txtProjectPeriodEndTo").val("");
+        $("#txtProjectManagerSearch").val("");
+        $("#txtContractNoSearch").val("");
+        $("#txtNoteSearch").val("");
+    }
+
+    //Enter Key to move to inputs
+    $(document).on("keypress", ".TabOnEnter", function (e) {
+        //Only do something when the user presses enter
+        if (e.keyCode == 13) {
+            var nextElement = $('[tabindex="' + (this.tabIndex + 1) + '"]');
+            console.log(this, nextElement);
+            if (nextElement.length)
+                nextElement.focus()
+            else
+                $('[tabindex="1"]').focus();
+        }
+    });
+
+    function Logout() {
+        sessionStorage.setItem('UserID', '');
+        sessionStorage.setItem('UserName', '');
+        sessionStorage.setItem('UserMail', '');
+        sessionStorage.setItem('UserType', '');
+
+        var url = "Login.html";
+        window.location.href = url;
+    }
+
+    function initializeMap(data) {
+        geocoder = new google.maps.Geocoder();
+
+        if (data.length == 0) {
+            var LatLng = new google.maps.LatLng(-6.175381, 106.828319);
+            var mapOptions = {
+                center: LatLng,
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            return;
+        }
+
+        var statusProject = data.StatusProject;
+
+        if ((data[0].Latitude != 0) && (data[0].Longitude != 0)) {
+
+            var LatLng = new google.maps.LatLng(data[0].Latitude, data[0].Longitude);
+            var mapOptions = {
+                center: LatLng,
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: LatLng,
+                map: map
+            });
+
+            var statusProject = data[0].StatusProject;
+            if (statusProject == "STSPRJ01") {
+                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+            }
+            else if (statusProject == "STSPRJ02") {
+                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png')
+            }
+            else{
+                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+            }
+
+            markers.push(marker);
+        }
+
+        for (i = 1; i < data.length; i++) {
+            var statusProject = data[i].StatusProject;
+
+            if ((data[i].Latitude != 0) && (data[i].Longitude != 0)) {
+                var LatLng2 = new google.maps.LatLng(data[i].Latitude, data[i].Longitude);
+                var marker = new google.maps.Marker({
+                    position: LatLng2,
+                    map: map
+                });
+
+                var statusProject = data[i].StatusProject;
+                if (statusProject == "STSPRJ01") {
+                    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+                }
+                else if (statusProject == "STSPRJ02") {
+                    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png')
+                }
+                else {
+                    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+                }
+
+                markers.push(marker);
+
+            }
+        }
+    }
+
+    function initMap(latLngData) {
+        var mapOptions = {
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+
+        var mapOptions = {
+            zoom: 1,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+
+        for (i = 0; i < latLngData.length; i++) {
+            var markerLatLng = new google.maps.Marker(latLngData[i].Latitude, latLngData[i].Longitude);
+            addMarker(markerLatLng);
+        }
+
+        // This event listener will call addMarker() when the map is clicked.
+        map.addListener('click', function (event) {
+            addMarker(event.latLng);
+        });
+
+        showMarkers(map);
+    }
+
+    function showMarker(location, statusProject) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+
+        if (statusProject == "STSPRJ01") {
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+        }
+        else if (statusProject == "STSPRJ02") {
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png')
+        }
+        else {
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+        }
+
+        markers.push(marker);
+    }
+
+    // Adds a marker to the map and push to the array.
+    function addMarker(location) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        markers.push(marker);
+    }
+
+    // Sets the map on all markers in the array.
+    function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }
+    }
+
+    // Removes the markers from the map, but keeps them in the array.
+    function clearMarkers() {
+        setMapOnAll(null);
+        markers = [];
+        google.maps.event.addListener(map, 'click', function (e) {
+
+            setMapOnAll(null);
+            markers = [];
+
+            var dataLatitude;
+            var dataLongitude;
+
+            var location = e.latLng;
+
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+
+            markers.push(marker);
+
+            dataLatitude = e.latLng.lat;
+            dataLongitude = e.latLng.lng;
+
+            $("#hiddenLatitude").val(dataLatitude);
+            $("#hiddenLongitude").val(dataLongitude);
+
+            //get location name
+            geocoder.geocode({ 'latLng': e.latLng }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    console.log(results)
+                    //alert("Location: " + results[1].formatted_address + "\r\nLatitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                    var alamat = results[0].formatted_address;
+                    $("#txtProjectAddress").val(alamat);
+                } else {
+
+                }
+            });
+
+        });
+    }
+
+
+
+    // Shows any markers currently in the array.
+    function showMarkers() {
+        setMapOnAll(map);
+    }
+
+    // Deletes all markers in the array by removing references to them.
+    function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+    }
+    </script>
+</body>
+</html>

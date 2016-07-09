@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <title>Master Steel</title>
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="Fonts/Roboto-Regular.ttf" />
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrap">
+            <div class="content">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <!--<div class="Setting">
+                                <img src="Image/setting_icon.png" width="30" height="30" />
+                            </div>-->
+                        </td>
+                        <td>
+                            <!--<div class="UserMenu">
+                                <a href="Loginpage.html"><img src="Image/user_icon.png" width="30" height="30" /></a>
+                            </div>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; height:67%; margin-left:1%;">
+                <table align="center">
+                    <tr>
+                        <td height="120px"></td>
+                    </tr>
+                    <tr>
+                        <td class="Login">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <b><label class="labelNIK">LOGIN</label></b>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table align="center">
+                                <tr>
+                                    <td height="20px"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="labelNIK">Username</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="Textbox TabOnEnter" tabindex="1" id="txtUsername" />
+                                    </td>
+                                    <td>
+                                        <label id="lblUsernameWarning" style="color:red"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="labelPassword">Password</label>
+                                    </td>
+                                    <td>
+                                        <input type="password" class="Textbox TabOnEnter" tabindex="2" id="txtPassword" />
+                                    </td>
+                                    <td>
+                                        <label id="lblPasswordWarning" style="color:red"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <label id="lblUserIdWarning" style="color:red"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td align="right">
+                                        <input type="submit" value="Login" class="buttonLogin LoginButton TabOnEnter" tabindex="3" id="btnLogin" onclick="checkField();" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Loading Gif-->
+            <div class="loader" id="loading"></div>
+
+            <div class="content" style="margin-top:1%;">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <!--loading gif-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        })
+    </script>
+
+    <script>
+
+        //var uri = 'http://localhost:5842/api/Users';
+        //var uriBase = 'http://localhost:5842/';
+
+        var uri = 'http://mastersteel.azurewebsites.net/api/Users';
+        var uriBase = 'http://mastersteel.azurewebsites.net/';
+
+        function checkField() {
+            if ($("#txtUsername").val() == '') {
+                $("#lblUsernameWarning").text("Masukkan Username");
+            }
+            if ($("#txtUsername").val() != '') {
+                $("#lblUsernameWarning").text("");
+            }
+            if ($("#txtPassword").val() == '') {
+                $("#lblPasswordWarning").text("Masukkan Password");
+            }
+            if ($("#txtPassword").val() != '') {
+                $("#lblPasswordWarning").text("");
+            }
+            if ($("#txtUsername").val() != '' && $("#txtPassword").val() != '') {
+                validasiLogin();
+            }
+        }
+
+        function validasiLogin() {
+
+            var username = $("#txtUsername").val();
+            var password = $("#txtPassword").val();
+
+            checkLogin();
+
+        }
+
+        function checkLogin() {
+
+            $("#loading").show(); //show loading
+
+            var username = $("#txtUsername").val();
+            var password = $("#txtPassword").val();
+
+            $.ajax({
+                type: 'GET',
+                url: uri + '/GetUserLoginMobile/values?userName=' + username + '&password=' + password,
+                success: function (data) {
+                    var token = data.Token;
+                    var userID = data.UserID;
+                    var userName = data.UserName;
+                    var userMail = data.Mail;
+                    var userType = data.Type;
+                    var userPassword = $("#txtPassword").val();
+
+                    if (userID == null) {
+                        $("#lblUserIdWarning").text("Username dan Password salah");
+                    }
+                    else {
+                        if (userType == 0 || userType == 1) {
+                            sessionStorage.setItem('Token', data.Token);
+                            sessionStorage.setItem('UserID', data.UserID);
+                            sessionStorage.setItem('UserName', data.UserName);
+                            sessionStorage.setItem('UserPassword', userPassword);
+                            sessionStorage.setItem('UserMail', data.Mail);
+                            sessionStorage.setItem('UserType', data.Type);
+
+                            var url = "Projects.html";
+                            window.location.href = url;
+                        }
+                        else {
+                            alert('Selain admin & sales dilarang masuk');
+                        }
+                    }
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+        //Enter Key to move to inputs
+        $(document).on("keypress", ".TabOnEnter", function (e) {
+            //Only do something when the user presses enter
+            if (e.keyCode == 13) {
+                var nextElement = $('[tabindex="' + (this.tabIndex + 1) + '"]');
+                console.log(this, nextElement);
+                if (nextElement.length)
+                    nextElement.focus()
+                else
+                    $('[tabindex="1"]').focus();
+            }
+        });
+
+    </script>
+
+
+</body>
+</html>

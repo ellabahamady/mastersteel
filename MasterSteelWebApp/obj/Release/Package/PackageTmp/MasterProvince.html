@@ -1,0 +1,659 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <title>Master Steel | Master Province</title>
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="css2/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css2/component.css" />
+    <script src="js2/modernizr-custom.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- List Menu-->
+        <div class="menu-wrap" id="menuBody">
+            <nav id="ml-menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li class="menu__item"><a class="menu__link" id="menuHome" href="Homepage.html">Home</a></li>
+                        <li class="menu__item"><a class="menu__link active" id="menuMaster" data-submenu="submenu-1" href="#">Master</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuTransaction" data-submenu="submenu-2" href="#">Project</a></li>
+                    </ul>
+                    <!-- Submenu 1 -->
+                    <ul data-menu="submenu-1" class="menu__level">
+                        <li class="menu__item"><a class="menu__link" id="menuMasterJabatan" href="MasterJabatan.html">Jabatan</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterUser" href="MasterUser.html">User</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterClient" href="MasterClient.html">Client</a></li>
+                        <li class="menu__item"><a class="menu__link active" id="menuMasterProvince" href="MasterProvince.html">Province</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterCity" href="MasterCity.html">City</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterDeveloper" href="MasterDeveloper.html">Developer</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterContractor" href="MasterContractor.html">Contractor</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterConsultant" href="MasterConsultant.html">Consultant</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterSupplier" href="MasterSupplier.html">Supplier</a></li>
+                    </ul>
+                    <!-- Submenu 2 -->
+                    <ul data-menu="submenu-2" class="menu__level">
+                        <li class="menu__item"><a class="menu__link" id="menuProjectMaster" href="MasterProject.html">My Project</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuProjectOther" href="OtherProject.html">Other Project</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+
+        <!-- Content Website -->
+        <button class="menu-button" id="open-button" style="margin-top:2%;">Open Menu</button>
+        <div class="content-wrap">
+            <div class="content" id="headerBody">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <div class="Setting">
+                                <a href="Setting.html"><img src="Image/setting_icon.png" width="30" height="30" /></a>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="Loginpage.html" id="Logout" class="UserMenu" onclick="Logout();">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; margin-left:1%;" id="bodyContent">
+                <table align="center">
+                    <!-- Hidden Id -->
+                    <tr>
+                        <td>
+                            <input type="hidden" id="hiddenId" />
+                            <input type="hidden" id="hiddenUserId" />
+                            <input type="hidden" id="hiddenUserNIK" />
+                            <input type="hidden" id="hiddenUserName" />
+                        </td>
+                    </tr>
+                    <!-- Title -->
+                    <tr>
+                        <td align="center">
+                            <h3 class="labelTitlePage">Master Province</h3>
+                        </td>
+                    </tr>
+                    <!-- Data Table -->
+                    <tr>
+                        <td>
+                            <div>
+                                <table id="datatable" border="1" class="display" align="center" style="text-align:center" width="600">
+                                    <thead>
+                                        <tr>
+                                            <th>Province</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Add Button -->
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <input type="button" value="Add" class="buttonAdd" id="btnAdd" onclick="setEmptyField();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="FormUser">
+                                <table border="0" align="center" style="margin-top:10px;">
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblNama" class="labelNama">Province Name</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtNama" class='TabOnEnter Textbox' tabindex="2" style="width:300px" />
+                                        </td>
+                                        <td>
+                                            <label id="lblNamaWarning" style="color:red" class="labelNamaWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="15"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="button" value="Delete" class="buttonDelete Button" id="btnDelete" onclick="return validasiDelete();" />
+                                    </td>
+                                    <td width="10"></td>
+                                    <td>
+                                        <input type="button" value="Save" class="buttonSave Button" id="btnSave" onclick="checkField();" />
+                                    </td>
+                                    <td width="10"></td>
+                                    <td>
+                                        <input type="button" value="Cancel" class="buttonCancel Button" id="btnCancel" onclick="setEmptyField();" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Loading Gif-->
+            <div class="loader" id="loading"></div>
+
+            <div class="content" style="margin-top:1%;" id="footerBody">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" id="AboutUs" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" id="ContactUs" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+
+    <script src="js/classie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js2/classie.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        (function () {
+            var menuEl = document.getElementById('ml-menu'),
+                mlmenu = new MLMenu(menuEl, {
+                    backCtrl: false
+                });
+        })();
+    </script>
+
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script src="js/jquery-impromptu.min.js"></script>
+    <link rel='stylesheet' type='text/css' href="CSS/jquery-impromptu.css" />
+
+    <!--loading gif-->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        })
+    </script>
+
+    <script>
+
+        var userId;
+        var userNik;
+        var userName;
+        var userJabatanId;
+        var userJabatanName;
+        var colorHeader;
+        var colorBody;
+        var colorFooter;
+        var colorMenu;
+        var colorText;
+        var colorHover;
+
+        //WEB API URI
+
+        //var uri = 'http://localhost:5842/api/province';
+        //var uriBase = 'http://localhost:5842/';
+
+        var uri = 'http://mastersteel.azurewebsites.net/api/province';
+        var uriBase = 'http://mastersteel.azurewebsites.net/';
+
+        //DATA TABLE
+        var table;
+
+        $(document).ready(function () {
+            userId = sessionStorage.getItem('UserId');
+            userNik = sessionStorage.getItem('UserNIK');
+            userName = sessionStorage.getItem('UserName');
+            userJabatanId = sessionStorage.getItem('UserJabatanId');
+            userJabatanName = sessionStorage.getItem('UserJabatanName');
+            colorHeader = sessionStorage.getItem('ColorHeader');
+            colorBody = sessionStorage.getItem('ColorBody');
+            colorFooter = sessionStorage.getItem('ColorFooter');
+            colorMenu = sessionStorage.getItem('ColorMenu');
+            colorText = sessionStorage.getItem('ColorText');
+            colorHover = sessionStorage.getItem('ColorHover');
+
+            $("#hiddenUserId").val(userId);
+            $("#hiddenUserNIK").val(userNik);
+            $("#hiddenUserName").val(userName);
+
+            if (colorHeader != "null" && colorBody != "null" && colorFooter != "null" && colorMenu != "null" && colorText != "null" && colorHover != "null") {
+                var headerColor = '#' + colorHeader.toString();
+                var bodyColor = '#' + colorBody.toString();
+                var footerColor = '#' + colorFooter.toString();
+                var menuColor = '#' + colorMenu.toString();
+                var textColor = '#' + colorText.toString();
+                var hoverColor = '#' + colorHover.toString();
+
+                $("#headerBody").css("background-color", headerColor);
+                $("#bodyContent").css("background-color", bodyColor);
+                $("#footerBody").css("background-color", footerColor);
+                //$("#menuBody").css("background-color", menuColor);
+                document.getElementsByTagName('body')[0].style.color = textColor;
+                $("#Logout").css("color", textColor);
+                $("#AboutUs").css("color", textColor);
+                $("#ContactUs").css("color", textColor);
+
+                //$("#menuHome").css("color", textColor);
+                //$("#menuMaster").css("color", textColor);
+                //$("#menuTransaction").css("color", textColor);
+                //$("#menuMasterJabatan").css("color", textColor);
+                //$("#menuMasterUser").css("color", textColor);
+                //$("#menuMasterClient").css("color", textColor);
+                //$("#menuMasterProvince").css("color", textColor);
+                //$("#menuMasterCity").css("color", textColor);
+                //$("#menuMasterDeveloper").css("color", textColor);
+                //$("#menuMasterContractor").css("color", textColor);
+                //$("#menuMasterConsultant").css("color", textColor);
+                //$("#menuMasterSupplier").css("color", textColor);
+                //$("#menuProjectMaster").css("color", textColor);
+                //$("#menuProjectOther").css("color", textColor);
+
+                //$("#menuHome").mouseover(function () {
+                //    $("#menuHome").css("color", hoverColor);
+                //});
+
+                //$("#menuMaster").mouseover(function () {
+                //    $("#menuMaster").css("color", hoverColor);
+                //});
+
+                //$("#menuTransaction").mouseover(function () {
+                //    $("#menuTransaction").css("color", hoverColor);
+                //});
+
+                //$("#menuMasterJabatan").mouseover(function () {
+                //    $("#menuMasterJabatan").css("color", hoverColor);
+                //});
+
+                //$("#menuMasterUser").mouseover(function () {
+                //    $("#menuMasterUser").css("color", hoverColor);
+                //});
+
+                //$("#menuMasterClient").mouseover(function () {
+                //    $("#menuMasterClient").css("color", hoverColor);
+                //});
+
+                //$("#menuMasterProvince").mouseover(function () {
+                //    $("#menuMasterProvince").css("color", hoverColor);
+                //});
+
+                //$("#menuMasterCity").mouseover(function () {
+                //    $("#menuMasterCity").css("color", hoverColor);
+                //});
+
+                //$("#menuMasterDeveloper").mouseover(function () {
+                //    $("#menuMasterDeveloper").css("color", hoverColor);
+                //});
+
+                //$("#menuMasterContractor").mouseover(function () {
+                //    $("#menuMasterContractor").css("color", hoverColor);
+                //});
+
+                //$("#menuMasterConsultant").mouseover(function () {
+                //    $("#menuMasterConsultant").css("color", hoverColor);
+                //});
+
+                //$("#menuMasterSupplier").mouseover(function () {
+                //    $("#menuMasterSupplier").css("color", hoverColor);
+                //});
+
+                //$("#menuProjectMaster").mouseover(function () {
+                //    $("#menuProjectMaster").css("color", hoverColor);
+                //});
+
+                //$("#menuProjectOther").mouseover(function () {
+                //    $("#menuProjectOther").css("color", hoverColor);
+                //});
+
+                //$("#menuHome").mouseout(function () {
+                //    $("#menuHome").css("color", textColor);
+                //});
+
+                //$("#menuMaster").mouseout(function () {
+                //    $("#menuMaster").css("color", textColor);
+                //});
+
+                //$("#menuTransaction").mouseout(function () {
+                //    $("#menuTransaction").css("color", textColor);
+                //});
+
+                //$("#menuMasterJabatan").mouseout(function () {
+                //    $("#menuMasterJabatan").css("color", textColor);
+                //});
+
+                //$("#menuMasterUser").mouseout(function () {
+                //    $("#menuMasterUser").css("color", textColor);
+                //});
+
+                //$("#menuMasterClient").mouseout(function () {
+                //    $("#menuMasterClient").css("color", textColor);
+                //});
+
+                //$("#menuMasterProvince").mouseout(function () {
+                //    $("#menuMasterProvince").css("color", textColor);
+                //});
+
+                //$("#menuMasterCity").mouseout(function () {
+                //    $("#menuMasterCity").css("color", textColor);
+                //});
+
+                //$("#menuMasterDeveloper").mouseout(function () {
+                //    $("#menuMasterDeveloper").css("color", textColor);
+                //});
+
+                //$("#menuMasterContractor").mouseout(function () {
+                //    $("#menuMasterContractor").css("color", textColor);
+                //});
+
+                //$("#menuMasterConsultant").mouseout(function () {
+                //    $("#menuMasterConsultant").css("color", textColor);
+                //});
+
+                //$("#menuMasterSupplier").mouseout(function () {
+                //    $("#menuMasterSupplier").css("color", textColor);
+                //});
+
+                //$("#menuProjectMaster").mouseout(function () {
+                //    $("#menuProjectMaster").css("color", textColor);
+                //});
+
+                //$("#menuProjectOther").mouseout(function () {
+                //    $("#menuProjectOther").css("color", textColor);
+                //});
+
+            }
+
+            if (userId == null && userNik == null && userName == null) {
+                var url = "Loginpage.html";
+                window.location.href = url;
+            }
+
+            if (userId == "") {
+                var url = "Loginpage.html";
+                window.location.href = url;
+            }
+
+            //set display menu visibility
+            if (userJabatanName != "Administrator") {
+                $("#menuMaster").css("display", "none");
+            }
+
+            //ON FORM LOAD - GET NEWS DATA
+            $.getJSON(uri + '/GetAllProvinces')
+                .done(function (data) {
+                    // On success, 'data' contains a list of products.
+                    $('#datatable').DataTable(
+                        {
+                            data: data,
+                            columns: [
+                                { data: 'Name' }
+                            ]
+                        }
+                        );
+
+                    table = $('#datatable').DataTable();
+
+                    //function row table selected
+                    $('#datatable tbody').on('click', 'tr', function () {
+
+                        if ($(this).hasClass('selected')) {
+                            $(this).removeClass('selected');
+                        }
+                        else {
+                            table.$('tr.selected').removeClass('selected');
+                            $(this).addClass('selected');
+                        }
+
+                        //show details data
+                        var dataRow = table.row(this).data();
+                        getUserById(dataRow.Id);
+
+                    });
+
+                });
+
+        });
+
+
+        //Enter Key to move to inputs
+        $(document).on("keypress", ".TabOnEnter", function (e) {
+            //Only do something when the user presses enter
+            if (e.keyCode == 13) {
+                var nextElement = $('[tabindex="' + (this.tabIndex + 1) + '"]');
+                console.log(this, nextElement);
+                if (nextElement.length)
+                    nextElement.focus()
+                else
+                    $('[tabindex="1"]').focus();
+            }
+        });
+
+        function Logout() {
+            sessionStorage.setItem('UserId', '');
+            sessionStorage.setItem('UserNIK', '');
+            sessionStorage.setItem('UserName', '');
+            sessionStorage.setItem('UserJabatanId', '');
+            sessionStorage.setItem('UserJabatanName', '');
+
+            var url = "Loginpage.html";
+            window.location.href = url;
+        }
+
+        //$('#button').click(function () {
+        //    table.row('.selected').remove().draw(false);
+        //});
+
+
+        function getUserById(id) {
+            $.getJSON(uri + '/GetProvince/values?id=' + id)
+                .done(function (data) {
+                    $("#txtNama").val(data.Name);
+                    $("#hiddenId").val(data.Id);
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    alert("Error : " + err.text);
+                });
+        }
+
+        function checkField() {
+            if ($("#txtNama").val() == '') {
+                document.getElementById('lblNamaWarning').innerHTML = 'Nama tidak boleh kosong';
+                return;
+            }
+            if ($("#txtNama").val() != '') {
+                document.getElementById('lblNamaWarning').innerHTML = '';
+            }
+            validasiSave();
+        }
+        function validasiSave() {
+            $.prompt("Apakah data anda sudah benar?", {
+                title: "Save Data",
+                buttons: { "Ya": true, "Tidak": false },
+                submit: function (e, v, m, f) {
+
+                    if (v) {
+                        addUpdateData();
+                    }
+
+                    console.log("Value clicked was: " + v);
+                }
+            });
+        }
+
+        function validasiDelete() {
+            $.prompt("Apakah anda yakin ingin menghapus data ini?", {
+                title: "Delete Data",
+                buttons: { "Ya": true, "Tidak": false },
+                submit: function (e, v, m, f) {
+
+                    if (v) {
+                        deleteData();
+                    }
+
+                    console.log("Value clicked was: " + v);
+                }
+            });
+        }
+
+        function saveData(nama) {
+            $("#loading").show(); //show loading
+            table.destroy();
+
+            var userData = { Name: nama }
+            $.ajax({
+                type: 'POST',
+                url: uri + '/SaveProvince',
+                data: JSON.stringify(userData),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $.getJSON(uri)
+                        .done(function (data) {
+                            // On success, 'data' contains a list of products
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'Name' }
+                                    ]
+                                });
+                            table = $('#datatable').DataTable();
+                        });
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+
+        function updateData(idHidden, nama) {
+            $("#loading").show(); //show loading
+            table.destroy();
+            var userData = { Id: idHidden, Name: nama }
+            $.ajax({
+                type: 'PUT',
+                url: uri + '/UpdateProvince',
+                data: JSON.stringify(userData),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $.getJSON(uri)
+                        .done(function (data) {
+                            // On success, 'data' contains a list of products
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'Name' }
+                                    ]
+                                }
+                                );
+
+
+                            table = $('#datatable').DataTable();
+                        });
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+        function deleting() {
+            table.row('.selected').remove().draw();
+        }
+
+        function deleteData() {
+            $("#loading").show(); //show loading
+            table.destroy();
+
+            var id = $('#hiddenId').val();
+
+            $.ajax({
+                type: 'Delete',
+                url: uri + '/DeleteProvince/values?id=' + id,
+                success: function (data) {
+                    $.getJSON(uri)
+                        .done(function (data) {
+                            // On success, 'data' contains a list of products
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'Name' }
+                                    ]
+                                });
+                            table = $('#datatable').DataTable();
+                            setEmptyField();
+                        });
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+        function setEmptyField() {
+            $("#txtNama").val("");
+            $("#hiddenId").val("Add");
+        }
+
+        function addUpdateData() {
+            var idHidden = $("#hiddenId").val();
+            //        alert("Id Hidden = " + idHidden);
+
+            var nama = $("#txtNama").val();
+
+            if (idHidden == "" || idHidden == "Add") {
+
+                saveData(nama);
+            }
+            else {
+                updateData(idHidden, nama);
+            }
+            setEmptyField();
+
+        }
+
+    </script>
+</body>
+</html>

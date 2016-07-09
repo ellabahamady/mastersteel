@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="MasterSteelWebAPI" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Eko\ Rahmat\\Documents\\SIJI\\Rumah\ 123\\Master\ Steel\\Source\ Code\\Web\\20151123\ Ella\ MasterSteelWeb\\MasterSteelWebApp\\MasterSteelWebApp\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Eko\ Rahmat\\Documents\\SIJI\\Rumah\ 123\\Master\ Steel\\Source\ Code\\Web\\20151123\ Ella\ MasterSteelWeb\\MasterSteelWebApp\\MasterSteelWebApp\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="ConnectionDatabase-Web.config Connection String" description="ConnectionDatabase Connection String used in web.config by the application to access the database." value="Server=tcp:ivupq9tiez.database.windows.net,1433;Database=MasterSteelDB;User ID=LovePink@ivupq9tiez;Password=pass@word1;Trusted_Connection=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Eko\ Rahmat\\Documents\\SIJI\\Rumah\ 123\\Master\ Steel\\Source\ Code\\Web\\20151123\ Ella\ MasterSteelWeb\\MasterSteelWebApp\\MasterSteelWebApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ConnectionDatabase']/@connectionString" />
+  </parameter>
+  <parameter name="Local-Web.config Connection String" description="Local Connection String used in web.config by the application to access the database." value="Server=EkoRahmat;Database=MasterSteelDatabase;User ID=sa;Password=pass@word1;Trusted_Connection=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Eko\ Rahmat\\Documents\\SIJI\\Rumah\ 123\\Master\ Steel\\Source\ Code\\Web\\20151123\ Ella\ MasterSteelWeb\\MasterSteelWebApp\\MasterSteelWebApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Local']/@connectionString" />
+  </parameter>
+</parameters>

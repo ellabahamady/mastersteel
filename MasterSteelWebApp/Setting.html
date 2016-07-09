@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <title>Master Steel | Setting</title>
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="css2/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css2/component.css" />
+    <script src="js2/modernizr-custom.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- List Menu-->
+        <div class="menu-wrap">
+            <nav id="ml-menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li id="MasterUsers" class="menu__item"><a class="menu__link" href="Users.html">Users</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Projects.html">Projects</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ClientProject.html">Client Project</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ListOrders.html">List Orders</a></li>
+                        <li class="menu__item"><a class="menu__link" href="TrackingOrder.html">Tracking Order</a></li>
+                        <li class="menu__item"><a class="menu__link active" href="Setting.html">Setting</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+
+        <!-- Content Website -->
+        <button class="menu-button" id="open-button" style="margin-top:2%;">Open Menu</button>
+        <div class="content-wrap">
+            <div class="content">
+                <table>
+                    <!-- Hidden Id -->
+                    <tr>
+                        <td>
+                            <input type="hidden" id="hiddenId" />
+
+                            <input type="hidden" id="hiddenToken" />
+                            <input type="hidden" id="hiddenUserId" />
+                            <input type="hidden" id="hiddenUserName" />
+                            <input type="hidden" id="hiddenUserPassword" />
+                            <input type="hidden" id="hiddenUserMail" />
+                            <input type="hidden" id="hiddenUserType" />
+                        </td>
+                    </tr>
+                    <!-- Title -->
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <a href="Login.html" id="Logout" class="UserMenu" onclick="Logout();">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; margin-left:1%;">
+                <table align="center">
+                    <tr>
+                        <td align="center">
+                            <h3 class="labelTitlePage">Setting</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="FormUser" style="width:600px">
+                                <table border="0" align="center">
+                                    <tr>
+                                        <td>
+                                            <h4 class="labelTitlePage" style="color:#000000">Change Password</h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelNama">Old Password</label>
+                                        </td>
+                                        <td>
+                                            <input type="password" id="txtCurrentPassword" class='TabOnEnter Textbox' tabindex="1" style="width:300px" />
+                                        </td>
+                                        <td>
+                                            <label id="lblCurrentWarning" style="color:red" class="labelNamaWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelNama">New Password</label>
+                                        </td>
+                                        <td>
+                                            <input type="password" id="txtNewPassword" class='TabOnEnter Textbox' tabindex="2" style="width:300px" />
+                                        </td>
+                                        <td>
+                                            <label id="lblNewWarning" style="color:red" class="labelNamaWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelNama">Confirm New Password</label>
+                                        </td>
+                                        <td>
+                                            <input type="password" id="txtConfirmPassword" class='TabOnEnter Textbox' tabindex="3" style="width:300px" />
+                                        </td>
+                                        <td>
+                                            <label id="lblConfirmWarning" style="color:red" class="labelNamaWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td align="right">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <input type="button" value="Save" class="buttonSave Button" id="btnSave" onclick="checkField();" />
+                                                    </td>
+                                                    <td width="10"></td>
+                                                    <td>
+                                                        <input type="button" value="Cancel" class="buttonCancel Button" id="btnCancel" onclick="btnCancel();" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Loading Gif-->
+            <div class="loader" id="loading"></div>
+
+            <div class="content" style="margin-top:1%;" id="footerBody">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" id="AboutUs" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" id="ContactUs" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+
+    <script src="js/classie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js2/classie.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        (function () {
+            var menuEl = document.getElementById('ml-menu'),
+                mlmenu = new MLMenu(menuEl, {
+                    backCtrl: false
+                });
+        })();
+    </script>
+
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script src="js/jquery-impromptu.min.js"></script>
+    <link rel='stylesheet' type='text/css' href="CSS/jquery-impromptu.css" />
+
+
+    <!--loading gif-->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        })
+    </script>
+
+    <script>
+        var token;
+        var userId;
+        var userName;
+        var userPassword;
+        var userMail;
+        var userType;
+
+        //WEB API URI
+
+        //var uri = 'http://localhost:5842/api/User';
+        //var uribase = 'http://localhost:5842/';
+
+        var uri = 'http://mastersteel.azurewebsites.net/api/User';
+        var uriBase = 'http://mastersteel.azurewebsites.net/';
+
+        $(document).ready(function () {
+            token = sessionStorage.getItem('Token');
+            userId = sessionStorage.getItem('UserID');
+            userName = sessionStorage.getItem('UserName');
+            userPassword = sessionStorage.getItem('UserPassword');
+            userMail = sessionStorage.getItem('UserMail');
+            userType = sessionStorage.getItem('UserType');
+
+            $("#hiddenToken").val(token);
+            $("#hiddenUserId").val(userId);
+            $("#hiddenUserName").val(userName);
+            $("#hiddenUserPassword").val(userPassword);
+            $("#hiddenUserMail").val(userMail);
+            $("#hiddenUserType").val(userType);
+
+            if (userId == null) {
+                var url = "Login.html";
+                window.location.href = url;
+            }
+
+            if (userType == '1') {
+                $("#MasterUsers").hide();
+            }
+        });      
+
+        function checkField() {
+            if ($("#txtCurrentPassword").val() == '') {
+                $("#lblCurrentWarning").text("Tidak boleh kosong");
+            }
+            if ($("#txtCurrentPassword").val() != '') {
+                $("#lblCurrentWarning").text("");
+            }
+            if ($("#txtCurrentPassword").val() != $("#hiddenUserPassword").val()) {
+                $("#lblCurrentWarning").text("Password salah");
+            }
+            if ($("#txtNewPassword").val() == '') {
+                $("#lblNewWarning").text("Tidak boleh kosong");
+            }
+            if ($("#txtNewPassword").val() != '') {
+                $("#lblNewWarning").text("");
+            }
+            if ($("#txtConfirmPassword").val() == '') {
+                $("#lblConfirmWarning").text("Tidak boleh kosong");
+            }
+            if ($("#txtConfirmPassword").val() != '') {
+                $("#lblConfirmWarning").text("");
+            }
+            if ($("#txtConfirmPassword").val() != $("#txtNewPassword").val()) {
+                $("#lblNewWarning").text("not match");
+                $("#lblConfirmWarning").text("not match");
+            }
+            if ($("#txtCurrentPassword").val() != '' && $("#txtNewPassword").val() == $("#txtConfirmPassword").val() && $("#txtCurrentPassword").val() == $("#hiddenUserPassword").val()) {
+                validasiSave();
+            }
+        }
+        function validasiSave() {
+            $.prompt("Apakah data anda sudah benar?", {
+                title: "Save Data",
+                buttons: { "Ya": true, "Tidak": false },
+                submit: function (e, v, m, f) {
+
+                    if (v) {
+                        addUpdateData();
+                    }
+
+                    console.log("Value clicked was: " + v);
+                }
+            });
+        }
+
+        function addUpdateData() {
+            var token = $("#hiddenToken").val();
+            var id = $("#hiddenUserId").val();
+            var password = $("#txtCurrentPassword").val();
+            var newPassword = $("#txtNewPassword").val();
+
+            updateData(token, id, password, newPassword);
+
+            setEmptyField();
+        }
+
+        function updateData(token, id, password, newPassword) {
+            $("#loading").show(); //show loading
+            var userData = { Token: token, userID: id, Password: password, NewPassword: newPassword }
+            $.ajax({
+                type: 'PUT',
+                url: uri + '/ChangePassword',
+                data: JSON.stringify(userData),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    alert('Password has been changed');
+                    var url = "Login.html";
+                    window.location.href = url;
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+        function setEmptyField() {
+            $("#txtCurrentPassword").val("");
+            $("#txtNewPassword").val("");
+            $("#txtConfirmPassword").val("");
+        }
+
+        function btnCancel() {
+            var url = "Projects.html";
+            window.location.href = url;
+        }
+
+        function Logout() {
+            sessionStorage.setItem('UserID', '');
+            sessionStorage.setItem('UserName', '');
+            sessionStorage.setItem('UserMail', '');
+            sessionStorage.setItem('UserType', '');
+
+            var url = "Login.html";
+            window.location.href = url;
+        }
+
+        //Enter Key to move to inputs
+        $(document).on("keypress", ".TabOnEnter", function (e) {
+            //Only do something when the user presses enter
+            if (e.keyCode == 13) {
+                var nextElement = $('[tabindex="' + (this.tabIndex + 1) + '"]');
+                console.log(this, nextElement);
+                if (nextElement.length)
+                    nextElement.focus()
+                else
+                    $('[tabindex="1"]').focus();
+            }
+        });
+
+    </script>
+</body>
+</html>

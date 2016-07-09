@@ -1,0 +1,158 @@
+﻿.map {
+    width: 800px;
+    height: 400px;
+    background-color: #CCC;
+}
+
+.MainDashboard, html {
+    width:100%;
+    height:100%;
+    background-color:#5B5B5B;
+}
+
+.Header{
+    width:98%;
+    height:15%;
+    background-color:#000000;
+    position:absolute;
+    top:0px;
+    left:0%;
+}
+
+.Content{
+    width:98%;
+    height:68.7%;
+    background-color:#F2F2F2;
+    border:solid;
+    border-color:#404040;
+    position:absolute;
+    top:18%;
+    left:1%;
+}
+
+.ContentMasterUser{
+    width:98%;
+    height:auto;
+    background-color:#F2F2F2;
+    border:solid;
+    border-color:#404040;
+    position:absolute;
+    top:18%;
+    left:1%;
+}
+
+.Footer{
+    width:100%;
+    height:10%;
+    background-color:#404040;
+    position:absolute;
+    bottom:0px;
+    left:1%;
+}
+
+.FooterMasterUser{
+    width:98%;
+    height:10%;
+    background-color:#404040;
+    position:absolute;
+    left:1%;
+    bottom:0px;
+}
+
+.Setting{
+    position:absolute;
+    left:88%;
+    top:30%;
+}
+
+.UserMenu{
+    font-family: Roboto;
+    position:absolute;
+    left:92%;
+    top:35%;
+}
+.UserMenu:hover{
+    color: #EE2E26;
+}
+
+.AboutUs{
+    margin-left:2%;
+    
+}
+
+.ContactUs{
+   margin-left:-20%;
+}
+.Copyright{
+    font-size:17px;
+    margin-left:58%;
+    margin-top:20px;
+    font-family:'Myriad Pro';
+}
+
+.LogoLogin{
+    position:absolute;
+    top:5%;
+    left:30%;
+}
+
+.Login{
+    width:500px;
+    height:200px;
+    background-color:#EDEDED;
+    border:solid;
+    border-color:#D8D8D8;
+}
+
+.FormUser{
+    width:auto;
+    height:auto;
+    background-color:#EDEDED;
+    border:solid;
+    border-color:#D8D8D8;
+}
+
+.Textbox{
+    width:200px;
+    height:25px;
+    background-color:#F2F2F2;
+    border:solid;
+    border-color:#D8D8D8;
+}
+.Textarea{
+    background-color:#F2F2F2;
+    border:solid;
+    border-color:#D8D8D8;
+}
+
+.LoginButton{
+    width:80px;
+    height:35px;
+    background-color:#626365;
+    border:none;
+    color:#FFFFFF;
+    margin-top:10px;
+    align-content:center;
+}
+
+.Button{
+    height:35px;
+    background-color:#626365;
+    border:none;
+    color:#FFFFFF;
+}
+
+.TxtProjectMap{
+    font-family:'Myriad Pro';
+    font-size:45px;
+}
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: url('ajaxLoading.gif') 50% 50% no-repeat;
+}
+

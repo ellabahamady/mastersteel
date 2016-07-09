@@ -1,0 +1,604 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Master Steel | Tracking Order</title>
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="css2/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css2/component.css" />
+    <script src="js2/modernizr-custom.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- List Menu-->
+        <div class="menu-wrap">
+            <nav id="ml-menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li id="MasterUsers" class="menu__item"><a class="menu__link" href="Users.html">Users</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Projects.html">Projects</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ClientProject.html">Client Project</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ListOrders.html">List Orders</a></li>
+                        <li class="menu__item"><a class="menu__link active" href="TrackingOrder.html">Tracking Order</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Setting.html">Setting</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+
+        <!-- Content Website -->
+        <button class="menu-button" id="open-button" style="margin-top:2%;">Open Menu</button>
+        <div class="content-wrap">
+            <div class="content">
+                <table>
+                    <!-- Hidden Id -->
+                    <tr>
+                        <td>
+                            <input type="hidden" id="hiddenId" />
+
+                            <input type="hidden" id="hiddenToken" />
+                            <input type="hidden" id="hiddenUserId" />
+                            <input type="hidden" id="hiddenUserName" />
+                            <input type="hidden" id="hiddenUserPassword" />
+                            <input type="hidden" id="hiddenUserMail" />
+                            <input type="hidden" id="hiddenUserType" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <a href="Login.html" id="Logout" class="UserMenu" onclick="Logout();">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; margin-left:1%;">
+                <table align="center" width="90%">
+                    <tr>
+                        <td align="center">
+                            <h3 class="labelTitlePage">Tracking Order</h3>
+                        </td>
+                    </tr>
+                    <!-- Data Table -->
+                    <tr>
+                        <td>
+                            <div>
+                                <table id="datatable" border="1" class="display" align="center" style="text-align:center" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No. PO</th>
+                                            <th>No. PS</th>
+                                            <th>Tgl Pengiriman</th>
+                                            <th>No. Kendaraan</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr id="showTrackingOrder" style="display:none">
+                        <td align="center">
+                            <div>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <table align="center" style="margin-top:10px; background-color:white;">
+                                                <tr>
+                                                    <td colspan="3" align="center" style="background-color:#EE2E26;">
+                                                        Pick Slip Status
+                                                    </td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">No. PO </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtNomorPO" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">No. PS </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtNomorPS" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Tgl Pengiriman </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtTanggalPengiriman" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">No Kendaraan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtNomorKendaraan" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Order Muat </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td>
+                                                        <button id="statusOrderMuat1" style="width:15px; height:15px; background-color:green; border:none; display:none"></button>
+                                                        <button id="statusOrderMuat0" style="width:15px; height:15px; background-color:red; border:none; display:none"></button>
+                                                        <label id="txtOrderMuat" class="labelName" style="margin-right:50px"></label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Gudang </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td>
+                                                        <button id="statusGudang1" style="width:15px; height:15px; background-color:green; border:none; display:none"></button>
+                                                        <button id="statusGudang0" style="width:15px; height:15px; background-color:red; border:none; display:none"></button>
+                                                        <label id="txtGudang" class="labelName" style="margin-right:50px"></label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Surat Jalan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td>
+                                                        <button id="statusSuratJalan1" style="width:15px; height:15px; background-color:green; border:none; display:none"></button>
+                                                        <button id="statusSuratJalan0" style="width:15px; height:15px; background-color:red; border:none; display:none"></button>
+                                                        <label id="txtSuratJalan" class="labelName" style="margin-right:50px"></label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="20"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="padding-left:50px;">
+                                            <table id="PSDetail0" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang0" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity0" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan0" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail1" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang1" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity1" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan1" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail2" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang2" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity2" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan2" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail3" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang3" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity3" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan3" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail4" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang4" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity4" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan4" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail5" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang5" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity5" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan5" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail6" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang6" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity6" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan6" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail7" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang7" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity7" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan7" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail8" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang8" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity8" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan8" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail9" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang9" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity9" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan9" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                            <table id="PSDetail10" align="center" style="background-color:white; margin-top:10px; display:none">
+                                                <tr><td colspan="3" align="center" style="background-color:#EE2E26;">Pick Slip Detail</td></tr>
+                                                <tr><td height="20"></td></tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Nama Barang</label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailNamaBarang10" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Qty </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailQuantity10" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="labelName" style="margin-left:50px">Satuan </label></td>
+                                                    <td><label class="labelName" style="margin-left:20px; margin-right:20px"> : </label></td>
+                                                    <td><label id="txtSlipDetailSatuan10" class="labelName" style="margin-right:50px"></label></td>
+                                                </tr>
+                                                <tr><td height="20"></td></tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Loading Gif-->
+            <div class="loader" id="loading"></div>
+
+            <div class="content" style="margin-top:1%;">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" id="AboutUs" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" id="ContactUs" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+    <script src="js/classie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js2/classie.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        (function () {
+            var menuEl = document.getElementById('ml-menu'),
+                mlmenu = new MLMenu(menuEl, {
+                    backCtrl: false
+                });
+        })();
+    </script>
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script src="js/jquery-impromptu.min.js"></script>
+    <link rel='stylesheet' type='text/css' href="CSS/jquery-impromptu.css" />
+
+    <!--loading gif-->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        })
+    </script>
+
+    <script>
+        var token;
+        var userId;
+        var userName;
+        var userPassword;
+        var userMail;
+        var userType;
+
+        //WEB API URI
+        //var uri = 'http://localhost:5842/api/TrackingOrder';
+        //var uriSlip = 'http://localhost:5842/api/PickSlip';
+        //var uriBase = 'http://localhost:5842/';
+
+        var uri = 'http://mastersteel.azurewebsites.net/api/TrackingOrder';
+        var uriSlip = 'http://mastersteel.azurewebsites.net/api/PickSlip';
+        var uriBase = 'http://mastersteel.azurewebsites.net/';
+
+        //DATA TABLE
+        var table;
+
+        $(document).ready(function () {
+            token = sessionStorage.getItem('Token');
+            userId = sessionStorage.getItem('UserID');
+            userName = sessionStorage.getItem('UserName');
+            userPassword = sessionStorage.getItem('UserPassword');
+            userMail = sessionStorage.getItem('UserMail');
+            userType = sessionStorage.getItem('UserType');
+
+            $("#hiddenToken").val(token);
+            $("#hiddenUserId").val(userId);
+            $("#hiddenUserName").val(userName);
+            $("#hiddenUserPassword").val(userPassword);
+            $("#hiddenUserMail").val(userMail);
+            $("#hiddenUserType").val(userType);
+
+            if (userId == null) {
+                var url = "Login.html";
+                window.location.href = url;
+            }
+
+            if (userType == '1') {
+                $("#MasterUsers").hide();
+            }
+
+            //ON FORM LOAD - GET NEWS DATA
+            $.getJSON(uri + '/GetAllTrackingOrder/values?token=' + token)
+                .done(function (data) {
+                    // On success, 'data' contains a list of products.
+                    $('#datatable').DataTable(
+                        {
+                            data: data,
+                            columns: [
+                                { data: 'NomorPO' },
+                                { data: 'NomorPickSlip' },
+                                { data: 'TanggalPengiriman' },
+                                { data: 'NomorKendaraan' }
+                            ],
+
+                        }
+                        );
+
+                    table = $('#datatable').DataTable();
+
+                    //function row table selected
+                    $('#datatable tbody').on('click', 'tr', function () {
+
+                        if ($(this).hasClass('selected')) {
+                            $(this).removeClass('selected');
+                        }
+                        else {
+                            table.$('tr.selected').removeClass('selected');
+                            $(this).addClass('selected');
+                        }
+
+                        //show details data
+                        var dataRow = table.row(this).data();
+
+                        $("#showTrackingOrder").show();
+
+                        $("#txtNomorPO").text(dataRow.NomorPO);
+                        $("#txtNomorPS").text(dataRow.NomorPickSlip);
+                        $("#txtTanggalPengiriman").text(dataRow.TanggalPengiriman);
+                        $("#txtNomorKendaraan").text(dataRow.NomorKendaraan);
+
+                        var statusOrderMuat = dataRow.StatusOrderMuat;
+                        if (statusOrderMuat == 1) {
+                            $("#statusOrderMuat1").show();
+                            $("#statusOrderMuat0").hide();
+                        }
+                        else {
+                            $("#statusOrderMuat1").hide();
+                            $("#statusOrderMuat0").show();
+                        }
+                        $("#txtOrderMuat").text(dataRow.OrderMuat);
+
+                        var statusGudang = dataRow.StatusGudang;
+                        if (statusGudang == 1) {
+                            $("#statusGudang1").show();
+                            $("#statusGudang0").hide();
+                        }
+                        else {
+                            $("#statusGudang1").hide();
+                            $("#statusGudang0").show();
+                        }
+                        $("#txtGudang").text(dataRow.Gudang);
+
+                        var statusSuratJalan = dataRow.StatusSuratJalan;
+                        if (statusSuratJalan == 1) {
+                            $("#statusSuratJalan1").show();
+                            $("#statusSuratJalan0").hide();
+                        }
+                        else {
+                            $("#statusSuratJalan1").hide();
+                            $("#statusSuratJalan0").show();
+                        }
+                        $("#txtSuratJalan").text(dataRow.SuratJalan);
+
+                        getPSByPickSlipId(dataRow.NomorPickSlip);
+                        setEmptyField();
+
+                    });
+
+                });
+
+        });
+
+        function getPSByPickSlipId(pickSlipId) {
+            var token = $("#hiddenToken").val();
+
+            $.getJSON(uriSlip + '/GetPickSlipByPickSlipId/values?token=' + token + '&pickSlipId=' + pickSlipId)
+                .done(function (data) {
+
+                    for (i = 0; i < data.length; i++) {
+                        $("#PSDetail" + i).show();
+
+                        $("#txtSlipDetailNamaBarang" + i).text(data[i].DetailNamaBarang);
+                        $("#txtSlipDetailQuantity" + i).text(data[i].DetailQuantity);
+                        $("#txtSlipDetailSatuan" + i).text(data[i].DetailSatuan);
+                    }
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    alert("Error : " + err.text);
+                });
+        }
+
+        function Logout() {
+            sessionStorage.setItem('UserID', '');
+            sessionStorage.setItem('UserName', '');
+            sessionStorage.setItem('UserMail', '');
+            sessionStorage.setItem('UserType', '');
+
+            var url = "Login.html";
+            window.location.href = url;
+        }
+
+        function setEmptyField() {
+            for (i = 0; i <= 11; i++) {
+                $("#PSDetail" + i).hide();
+            }
+        }
+
+    </script>
+</body>
+</html>

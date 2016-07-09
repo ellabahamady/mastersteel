@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <table align="center" width="70%" border="0">
+        <!-- Title -->
+        <tr>
+            <td>
+                <div>
+                    <h2 class="labelTitlePage">Verification</h2>
+                </div>
+            </td>
+        </tr>
+        <!-- Verification -->
+        <tr>
+            <td>
+                <label id="lblVerification" class="labelVerification">Your Account has been Activated</label>
+            </td>
+        </tr>
+    </table>
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script>
+
+//        var uri = 'http://localhost:5842/api/user';
+        var uri = 'http://mastersteelwebapp.azurewebsites.net/api/user';
+
+        $(document).ready(function () {
+
+//            alert("Verifiy");
+
+            var queryStrings;
+            queryStrings = getUrlVars();
+
+//            alert(queryStrings["nik"]);
+//            alert(queryStrings["verify"]);
+
+            var nik = queryStrings["nik"];
+            var verify = queryStrings["verify"];
+
+            if(verify == 'AccountActive')
+            {
+                verifyEmail(nik);
+            }
+
+        })
+
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+//            alert('vars' + vars.toString());
+            return vars;
+        }
+
+        function verifyEmail(nik) {
+//            var newsData = { Id: idHidden, Title: newsTitle, Description: newsDescription, ImagePath: newsImagePath }
+            var userData = { NIK: nik }
+            $.ajax({
+                type: 'PUT',
+                url: uri + '/VerifyEmail',
+                data: JSON.stringify(userData),
+//                data: nik,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $.getJSON(uri)
+                        .done(function (data) {
+                            alert('Success Verified Email');
+                        })
+                        .fail(function (jqXHR, textStatus, err) {
+                            alert("Error : " + err.text);
+                        });
+                }
+            });
+        }
+
+
+    </script>
+</body>
+</html>

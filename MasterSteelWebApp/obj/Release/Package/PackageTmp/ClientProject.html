@@ -1,0 +1,629 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Master Steel | Client Project</title>
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="css2/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css2/component.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/datepicker.css" />
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/datepicker.js"></script>
+    <script src="js2/modernizr-custom.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- List Menu-->
+        <div class="menu-wrap">
+            <nav id="ml-menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li id="MasterUsers" class="menu__item"><a class="menu__link" href="Users.html">Users</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Projects.html">Projects</a></li>
+                        <li class="menu__item"><a class="menu__link active" href="ClientProject.html">Client Project</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ListOrders.html">List Orders</a></li>
+                        <li class="menu__item"><a class="menu__link" href="TrackingOrder.html">Tracking Order</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Setting.html">Setting</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+
+        <!-- Content Website -->
+        <button class="menu-button" id="open-button" style="margin-top:2%;">Open Menu</button>
+        <div class="content-wrap">
+            <div class="content">
+                <table>
+                    <!-- Hidden Id -->
+                    <tr>
+                        <td>
+                            <input type="hidden" id="hiddenId" />
+
+                            <input type="hidden" id="hiddenToken" />
+                            <input type="hidden" id="hiddenUserId" />
+                            <input type="hidden" id="hiddenUserName" />
+                            <input type="hidden" id="hiddenUserPassword" />
+                            <input type="hidden" id="hiddenUserMail" />
+                            <input type="hidden" id="hiddenUserType" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <a href="Login.html" id="Logout" class="UserMenu" onclick="Logout();">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; margin-left:1%;">
+                <table align="center" width="90%">
+                    <tr>
+                        <td align="center">
+                            <h3 class="labelTitlePage">Master Client Projects</h3>
+                        </td>
+                    </tr>
+                    <!-- Data Table -->
+                    <tr>
+                        <td>
+                            <div>
+                                <table id="datatable" border="1" class="display" align="center" style="text-align:center" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Client</th>
+                                            <th>Project Name</th>                                      
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="FormUser">
+                                <table border="0" align="center" style="margin-top:10px;">
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Client</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlClient" class='Textbox' style="width:300px; font-size:small"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="labelName">Project</label>
+                                        </td>
+                                        <td>     
+                                            <select id='textbox1' class="Textbox" style="width:300px; font-size:small" />    
+                                        </td>
+                                    </tr>       
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select id='textbox2' class="Textbox" style="width:300px; font-size:small; display:none" />    
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select id='textbox3' class="Textbox" style="width:300px; font-size:small; display:none" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select id='textbox4' class="Textbox" style="width:300px; font-size:small; display:none" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select id='textbox5' class="Textbox" style="width:300px; font-size:small; display:none" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select id='textbox6' class="Textbox" style="width:300px; font-size:small; display:none" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select id='textbox7' class="Textbox" style="width:300px; font-size:small; display:none" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select id='textbox8' class="Textbox" style="width:300px; font-size:small; display:none" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select id='textbox9' class="Textbox" style="width:300px; font-size:small; display:none" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select id='textbox10' class="Textbox" style="width:300px; font-size:small; display:none" />
+                                        </td>
+                                    </tr>
+                                    <!--<tr>
+                                        <td></td>
+                                        <td>
+                                            <input type='button' class="buttonSave Button" value='Add Project' id='addButton' onclick="btnAdd();">
+                                            <input type='button' class="buttonSave Button" value='Remove Project' id='removeButton' onclick="btnRemove();">
+                                        </td>
+                                    </tr>-->                          
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="15"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="button" value="Delete" class="buttonDelete Button" id="btnDelete" onclick="return validasiDelete();" />
+                                    </td>
+                                    <td width="10"></td>
+                                    <td>
+                                        <input type="button" value="Save" class="buttonSave Button" id="btnSave" onclick="validasiSave();" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Loading Gif-->
+            <div class="loader" id="loading"></div>
+
+            <div class="content" style="margin-top:1%;">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" id="AboutUs" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" id="ContactUs" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+    <script src="js/classie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js2/classie.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        (function () {
+            var menuEl = document.getElementById('ml-menu'),
+                mlmenu = new MLMenu(menuEl, {
+                    backCtrl: false
+                });
+        })();
+    </script>
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script src="js/jquery-impromptu.min.js"></script>
+    <link rel='stylesheet' type='text/css' href="CSS/jquery-impromptu.css" />
+
+    <!--loading gif-->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        })
+    </script>
+    <script>
+    var token;
+    var userId;
+    var userName;
+    var userPassword;
+    var userMail;
+    var userType;
+
+    var counter = 1;
+
+    //WEB API URI
+    //var uri = 'http://localhost:5842/api/ClientProject';
+    //var uriUser = 'http://localhost:5842/api/User';
+    //var uriProject = 'http://localhost:5842/api/Project';
+    //var uriBase = 'http://localhost:5842/';
+
+    var uri = 'http://mastersteel.azurewebsites.net/api/ClientProject';
+    var uriUser = 'http://mastersteel.azurewebsites.net/api/User';
+    var uriProject = 'http://mastersteel.azurewebsites.net/api/Project';
+    var uriBase = 'http://mastersteel.azurewebsites.net/';
+
+
+    $(document).ready(function () {
+        token = sessionStorage.getItem('Token');
+        userId = sessionStorage.getItem('UserID');
+        userName = sessionStorage.getItem('UserName');
+        userPassword = sessionStorage.getItem('UserPassword');
+        userMail = sessionStorage.getItem('UserMail');
+        userType = sessionStorage.getItem('UserType');
+
+        $("#hiddenToken").val(token);
+        $("#hiddenUserId").val(userId);
+        $("#hiddenUserName").val(userName);
+        $("#hiddenUserPassword").val(userPassword);
+        $("#hiddenUserMail").val(userMail);
+        $("#hiddenUserType").val(userType);
+
+        if (userId == null) {
+            var url = "Login.html";
+            window.location.href = url;
+        }
+
+        if (userType == '1') {
+            $("#MasterUsers").hide();
+        }
+
+        //ON FORM LOAD - GET NEWS DATA
+        $.getJSON(uri + '/GetAllClientProject/values?token=' + token)
+            .done(function (data) {
+
+                // On success, 'data' contains a list of products.
+                $('#datatable').DataTable(
+                    {
+                        data: data,
+                        columns: [
+                            { data: 'UserName' },
+                            { data: 'ProjectListName' }
+                        ]
+                    }
+                    );
+
+                table = $('#datatable').DataTable();
+
+                //function row table selected
+                $('#datatable tbody').on('click', 'tr', function () {
+
+                    if ($(this).hasClass('selected')) {
+                        $(this).removeClass('selected');
+                    }
+                    else {
+                        table.$('tr.selected').removeClass('selected');
+                        $(this).addClass('selected');
+                    }
+
+                    //show details data
+                    var dataRow = table.row(this).data();
+                    
+                    getProjectById(dataRow.Id);
+
+                });
+
+            });
+
+        loadClient();
+        loadProject();
+
+        function loadClient() {
+            $.getJSON(uriUser + '/GetAllClient/values?token=' + token)
+                .done(function (data) {
+                    var dataDeveloper = '';
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (k, item) {
+                        $("#ddlClient")
+                              .append($("<option></option>")
+                              .attr("value", item.UserID)
+                              .text(item.UserName));
+                    });
+                });
+        }
+
+        function loadProject() {
+                $.getJSON(uriProject + '/GetProjectNameList')
+                .done(function (data) {
+                    // On success, 'data' contains a list of products.
+                    for (i = 1; i <= 10; i++) {
+                        $.each(data, function (k, item) {
+                            $('#textbox' + i)
+                                  .append($("<option></option>")
+                                  .attr("value", item.ProjectIDMobile + ',' + item.ProjectName)
+                                  .text(item.ProjectName));
+                        });
+                    }                    
+                });
+            
+        }
+    });
+
+    function getProjectById(Id) {
+        $.getJSON(uri + '/GetClientProjectById/values?token=' + token + '&id=' + Id)
+            .done(function (data) {
+
+                setEmptyField();
+
+                $("#hiddenId").val(data.Id);
+                $("#ddlClient").val(data.UserID);
+
+                var str = data.ProjectList;
+                var mystring = str.split(",");
+
+                var strName = data.ProjectListName;
+                var mystringName = strName.split(", ");
+
+                var totalProject = mystring.length;
+                counter = totalProject;
+
+                for (i = 0; i < totalProject; i++) {
+                    var number = i + 1;
+                    $('#textbox' + number).show();
+                    $('#textbox' + number).val(mystring[i] + ',' + mystringName[i]);
+                }
+
+            })
+            .fail(function (jqXHR, textStatus, err) {
+                alert("Error : " + err.text);
+            });
+    }
+
+    function btnAdd() {
+        if (counter > 10) {
+            alert("Only 10 projects allow");
+            return false;
+        }
+        var number = counter + 1;
+
+        $('#textbox' + number).show();
+
+        counter++;
+    }
+
+    function btnRemove() {
+        if (counter == 1) {
+            alert("No more project to remove");
+            return false;
+        }
+
+        counter--;
+
+        var number = counter + 1;
+        $("#textbox" + number).hide();
+    }
+
+    function btnValue() {
+        var msg = '';
+        for (i = 1; i <= counter; i++) {
+            if (i == counter) {
+                msg += $('#textbox' + i).val();
+            }
+            else {
+                msg += $('#textbox' + i).val() + ', ';
+            }
+        }
+        alert(msg);
+    }
+
+    function validasiSave() {
+        $.prompt("Apakah data anda sudah benar?", {
+            title: "Save Data",
+            buttons: { "Ya": true, "Tidak": false },
+            submit: function (e, v, m, f) {
+
+                if (v) {
+                    addUpdateData();
+                }
+
+                console.log("Value clicked was: " + v);
+            }
+        });
+    }
+
+    function validasiDelete() {
+        $.prompt("Apakah anda yakin ingin menghapus data ini?", {
+            title: "Delete Data",
+            buttons: { "Ya": true, "Tidak": false },
+            submit: function (e, v, m, f) {
+
+                if (v) {
+                    deleteData();
+                }
+
+                console.log("Value clicked was: " + v);
+            }
+        });
+    }
+
+    function deleteData() {
+        var id = $("#hiddenId").val();
+        var token = $("#hiddenToken").val();
+        var userID = $("#ddlClient").val();
+
+        $("#loading").show(); //show loading
+        table.destroy();
+        var userData = { token: token, id: id}
+        $.ajax({
+            type: 'Delete',
+            url: uri + '/DeleteClientProject',
+            data: JSON.stringify(userData),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                $.getJSON(uri)
+                    .done(function (data) {
+                        // On success, 'data' contains a list of products
+                        $('#datatable').DataTable(
+                            {
+                                data: data,
+                                columns: [
+                                    { data: 'UserName' },
+                                    { data: 'ProjectListName' }
+                                ]
+                            }
+                            );
+
+                        table = $('#datatable').DataTable();
+                    });
+                window.location.reload(true);
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+    }
+
+    function addUpdateData() {
+        var id = $("#hiddenId").val();
+        var token = $("#hiddenToken").val();
+        var userID = $("#ddlClient").val();
+        
+        var msg = '';
+        var msgName = '';
+        for (i = 1; i <= counter; i++) {
+            var str = $('#textbox' + i).val();;
+            var mystring = str.split(",");
+
+            if (i == counter) {
+                msg += mystring[0];
+                msgName += mystring[1];
+            }
+            else {
+                msg += mystring[0] + ',';
+                msgName += mystring[1] + ', ';
+            }
+        }
+
+        var projectList = msg;
+        var projectListName = msgName;
+
+        if (id == "") {
+
+            saveData(token, userID, projectList, projectListName);
+        }
+        else {
+            updateData(token, id, userID, projectList, projectListName);
+        }
+        setEmptyField();
+    }
+
+    function saveData(token, userID, projectList, projectListName) {
+        $("#loading").show(); //show loading
+        table.destroy();
+
+        var userData = { token: token, userID: userID, projectList: projectList, projectListName: projectListName }
+        $.ajax({
+            type: 'POST',
+            url: uri + '/InsertClientProject',
+            data: JSON.stringify(userData),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                $.getJSON(uri)
+                    .done(function (data) {
+                        // On success, 'data' contains a list of products
+                        $('#datatable').DataTable(
+                            {
+                                data: data,
+                                columns: [
+                                    { data: 'UserName' },
+                                    { data: 'ProjectListName' }
+                                ]
+                            });
+                        table = $('#datatable').DataTable();
+                    });
+                window.location.reload(true);
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+    }
+
+    function updateData(token, id, userID, projectList, projectListName) {
+        $("#loading").show(); //show loading
+        table.destroy();
+        var userData = { token: token, id: id, userID: userID, projectList: projectList, projectListName: projectListName }
+        $.ajax({
+            type: 'PUT',
+            url: uri + '/UpdateClientProject',
+            data: JSON.stringify(userData),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                $.getJSON(uri)
+                    .done(function (data) {
+                        // On success, 'data' contains a list of products
+                        $('#datatable').DataTable(
+                            {
+                                data: data,
+                                columns: [
+                                    { data: 'UserName' },
+                                    { data: 'ProjectListName' }
+                                ]
+                            }
+                            );
+
+
+                        table = $('#datatable').DataTable();
+                    });
+                window.location.reload(true);
+            },
+            complete: function () {
+                $("#loading").hide(); //hide loading here
+            }
+        });
+    }
+
+    function setEmptyField() {
+        for (i = 2; i <= 10; i++) {
+            $('#textbox' + i).hide();
+        }
+        
+    }
+
+    function Logout() {
+        sessionStorage.setItem('UserID', '');
+        sessionStorage.setItem('UserName', '');
+        sessionStorage.setItem('UserMail', '');
+        sessionStorage.setItem('UserType', '');
+
+        var url = "Login.html";
+        window.location.href = url;
+    }
+
+    </script>
+
+</body>
+</html>

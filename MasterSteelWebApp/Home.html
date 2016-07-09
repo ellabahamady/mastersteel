@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Master Steel | Home</title>
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="css2/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css2/component.css" />
+    <script src="js2/modernizr-custom.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- List Menu-->
+        <div class="menu-wrap">
+            <nav id="ml-menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li class="menu__item"><a class="menu__link active" href="Home.html">Home</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Users.html">Users</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Projects.html">Projects</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+
+        <!-- Content Website -->
+        <button class="menu-button" id="open-button" style="margin-top:2%;">Open Menu</button>
+        <div class="content-wrap">
+            <div class="content">
+                <table>
+                    <!-- Hidden Id -->
+                    <tr>
+                        <td>
+                            <input type="hidden" id="hiddenToken" />
+                            <input type="hidden" id="hiddenUserId" />
+                            <input type="hidden" id="hiddenUserName" />
+                            <input type="hidden" id="hiddenUserMail" />
+                            <input type="hidden" id="hiddenUserType" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <div class="Setting">
+                                <a href="#"><img src="Image/setting_icon.png" width="30" height="30" /></a>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="Login.html" id="Logout" class="UserMenu" onclick="Logout();">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; height:69%; margin-left:1%;">
+                <table align="center">
+                    <tr>
+                        <td height="100px"></td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <img src="Image/LogoMasterSteel.png" width="500" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="30px"></td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <label class="TxtProjectMap">Project Map</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%;">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" id="AboutUs" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" id="ContactUs" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+    <script src="js/classie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js2/classie.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        (function () {
+            var menuEl = document.getElementById('ml-menu'),
+                mlmenu = new MLMenu(menuEl, {
+                    backCtrl: false
+                });
+        })();
+    </script>
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script>
+        var token;
+        var userId;
+        var userName;
+        var userMail;
+        var userType;
+
+        $(document).ready(function () {
+            token = sessionStorage.getItem('Token');
+            userId = sessionStorage.getItem('UserID');
+            userName = sessionStorage.getItem('UserName');
+            userMail = sessionStorage.getItem('UserMail');
+            userType = sessionStorage.getItem('UserType');
+            
+            $("#hiddenToken").val(token);
+            $("#hiddenUserId").val(userId);
+            $("#hiddenUserName").val(userName);
+            $("#hiddenUserMail").val(userMail);
+            $("#hiddenUserType").val(userType);
+
+            if (userId == null) {
+                var url = "Login.html";
+                window.location.href = url;
+            }
+
+        });
+
+        function Logout() {
+            sessionStorage.setItem('UserID', '');
+            sessionStorage.setItem('UserName', '');
+            sessionStorage.setItem('UserMail', '');
+            sessionStorage.setItem('UserType', '');
+
+            var url = "Login.html";
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

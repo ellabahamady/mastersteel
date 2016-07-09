@@ -1,0 +1,71 @@
+﻿body {
+    background-color: #FFFFFF
+}
+
+.buttonAdd
+,.buttonSave
+,.buttonDelete
+,.buttonVerifyEmail
+,.buttonCancel
+,.buttonLogin
+{
+    height:35px;
+    background-color:#666769;
+    color:white;
+    font-family: Roboto;
+    border:none;
+}
+
+.labelTitlePage
+,.labelTitle
+,.labelDescription
+,.labelImage
+,.labelFileName
+{
+    font-family: Roboto;
+    
+}
+
+.imageUpload
+{
+    width: 300px;
+    height: 150px;
+}
+
+.labelNIK
+,.labelNama
+,.labelJabatan
+,.labelEmail
+,.labelPassword
+,.labelNomor
+,.labelName
+,.labelProvince
+,.labelCity
+,.labelDeveloper
+,.labelContractor
+,.labelConsultant
+,.labelProvince
+,.labelRangeDate
+,.labelRangeQuality
+,.labelRangeNominal
+,.labelNote
+,.labelImage
+,.display
+{
+    font-family: Roboto;
+    color:#000000;
+}
+
+label{
+    
+    font-family: Roboto;
+}
+
+a{
+    font-family: Roboto;
+}
+
+text{
+    font-family: Roboto;
+}
+

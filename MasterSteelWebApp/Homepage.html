@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <title>Master Steel | Home</title>
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="css2/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css2/component.css" />
+    <script src="js2/modernizr-custom.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- List Menu-->
+        <div class="menu-wrap" id="menuBody">
+            <nav id="ml-menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li class="menu__item"><a class="menu__link active" id="menuHome" href="Homepage.html">Home</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMaster" data-submenu="submenu-1" href="#">Master</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuTransaction" data-submenu="submenu-2" href="#">Project</a></li>
+                    </ul>
+                    <!-- Submenu 1 -->
+                    <ul data-menu="submenu-1" class="menu__level">
+                        <li class="menu__item"><a class="menu__link" id="menuMasterJabatan" href="MasterJabatan.html">Jabatan</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterUser" href="MasterUser.html">User</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterClient" href="MasterClient.html">Client</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterProvince" href="MasterProvince.html">Province</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterCity" href="MasterCity.html">City</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterDeveloper" href="MasterDeveloper.html">Developer</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterContractor" href="MasterContractor.html">Contractor</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterConsultant" href="MasterConsultant.html">Consultant</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuMasterSupplier" href="MasterSupplier.html">Supplier</a></li>
+                    </ul>
+                    <!-- Submenu 2 -->
+                    <ul data-menu="submenu-2" class="menu__level">
+                        <li class="menu__item"><a class="menu__link" id="menuProjectMaster" href="MasterProject.html">My Project</a></li>
+                        <li class="menu__item"><a class="menu__link" id="menuProjectOther" href="OtherProject.html">Other Project</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+
+        <!-- Content Website -->
+        <button class="menu-button" id="open-button" style="margin-top:2%;">Open Menu</button>
+        <div class="content-wrap">
+            <div class="content" id="headerBody">
+                <table>
+                    <!-- Hidden Id -->
+                    <tr>
+                        <td>
+                            <input type="hidden" id="hiddenUserId" />
+                            <input type="hidden" id="hiddenUserNIK" />
+                            <input type="hidden" id="hiddenUserName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <div class="Setting">
+                                <a href="Setting.html"><img src="Image/setting_icon.png" width="30" height="30" /></a>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="Loginpage.html" id="Logout" class="UserMenu" onclick="Logout();">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; height:69%; margin-left:1%;" id="bodyContent">
+                <table align="center">
+                    <tr>
+                        <td height="100px"></td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <img src="Image/LogoMasterSteel.png" width="500" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="30px"></td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <label class="TxtProjectMap">Project Map</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%;" id="footerBody">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" id="AboutUs" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" id="ContactUs" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+    <script src="js/classie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js2/classie.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        (function () {
+            var menuEl = document.getElementById('ml-menu'),
+                mlmenu = new MLMenu(menuEl, {
+                    backCtrl: false
+                });
+        })();
+    </script>
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script>
+        var userId;
+        var userNik;
+        var userName;
+        var userJabatanId;
+        var userJabatanName;
+        var colorHeader;
+        var colorBody;
+        var colorFooter;
+        var colorMenu;
+        var colorText;
+        var colorHover;
+
+        $(document).ready(function () {
+        userId = sessionStorage.getItem('UserId');
+        userNik = sessionStorage.getItem('UserNIK');
+        userName = sessionStorage.getItem('UserName');
+        userJabatanId = sessionStorage.getItem('UserJabatanId');
+        userJabatanName = sessionStorage.getItem('UserJabatanName');
+        colorHeader = sessionStorage.getItem('ColorHeader');
+        colorBody = sessionStorage.getItem('ColorBody');
+        colorFooter = sessionStorage.getItem('ColorFooter');
+        colorMenu = sessionStorage.getItem('ColorMenu');
+        colorText = sessionStorage.getItem('ColorText');
+        colorHover = sessionStorage.getItem('ColorHover');
+
+        $("#hiddenUserId").val(userId);
+        $("#hiddenUserNIK").val(userNik);
+        $("#hiddenUserName").val(userName);
+
+        if (colorHeader != "null" && colorBody != "null" && colorFooter != "null" && colorMenu != "null" && colorText != "null" && colorHover != "null") {
+            var headerColor = '#' + colorHeader.toString();
+            var bodyColor = '#' + colorBody.toString();
+            var footerColor = '#' + colorFooter.toString();
+            var menuColor = '#' + colorMenu.toString();
+            var textColor = '#' + colorText.toString();
+            var hoverColor = '#' + colorHover.toString();
+
+            $("#headerBody").css("background-color", headerColor);
+            $("#bodyContent").css("background-color", bodyColor);
+            $("#footerBody").css("background-color", footerColor);
+            //$("#menuBody").css("background-color", menuColor);
+            document.getElementsByTagName('body')[0].style.color = textColor;
+            $("#Logout").css("color", textColor);
+            $("#AboutUs").css("color", textColor);
+            $("#ContactUs").css("color", textColor);
+
+            //$("#menuHome").css("color", textColor);
+            //$("#menuMaster").css("color", textColor);
+            //$("#menuTransaction").css("color", textColor);
+            //$("#menuMasterJabatan").css("color", textColor);
+            //$("#menuMasterUser").css("color", textColor);
+            //$("#menuMasterClient").css("color", textColor);
+            //$("#menuMasterProvince").css("color", textColor);
+            //$("#menuMasterCity").css("color", textColor);
+            //$("#menuMasterDeveloper").css("color", textColor);
+            //$("#menuMasterContractor").css("color", textColor);
+            //$("#menuMasterConsultant").css("color", textColor);
+            //$("#menuMasterSupplier").css("color", textColor);
+            //$("#menuProjectMaster").css("color", textColor);
+            //$("#menuProjectOther").css("color", textColor);
+
+            //$("#menuHome").mouseover(function () {
+            //    $("#menuHome").css("color", hoverColor);
+            //});
+
+            //$("#menuMaster").mouseover(function () {
+            //    $("#menuMaster").css("color", hoverColor);
+            //});
+
+            //$("#menuTransaction").mouseover(function () {
+            //    $("#menuTransaction").css("color", hoverColor);
+            //});
+
+            //$("#menuMasterJabatan").mouseover(function () {
+            //    $("#menuMasterJabatan").css("color", hoverColor);
+            //});
+
+            //$("#menuMasterUser").mouseover(function () {
+            //    $("#menuMasterUser").css("color", hoverColor);
+            //});
+
+            //$("#menuMasterClient").mouseover(function () {
+            //    $("#menuMasterClient").css("color", hoverColor);
+            //});
+
+            //$("#menuMasterProvince").mouseover(function () {
+            //    $("#menuMasterProvince").css("color", hoverColor);
+            //});
+
+            //$("#menuMasterCity").mouseover(function () {
+            //    $("#menuMasterCity").css("color", hoverColor);
+            //});
+
+            //$("#menuMasterDeveloper").mouseover(function () {
+            //    $("#menuMasterDeveloper").css("color", hoverColor);
+            //});
+
+            //$("#menuMasterContractor").mouseover(function () {
+            //    $("#menuMasterContractor").css("color", hoverColor);
+            //});
+
+            //$("#menuMasterConsultant").mouseover(function () {
+            //    $("#menuMasterConsultant").css("color", hoverColor);
+            //});
+
+            //$("#menuMasterSupplier").mouseover(function () {
+            //    $("#menuMasterSupplier").css("color", hoverColor);
+            //});
+
+            //$("#menuProjectMaster").mouseover(function () {
+            //    $("#menuProjectMaster").css("color", hoverColor);
+            //});
+
+            //$("#menuProjectOther").mouseover(function () {
+            //    $("#menuProjectOther").css("color", hoverColor);
+            //});
+
+            //$("#menuHome").mouseout(function () {
+            //    $("#menuHome").css("color", textColor);
+            //});
+
+            //$("#menuMaster").mouseout(function () {
+            //    $("#menuMaster").css("color", textColor);
+            //});
+
+            //$("#menuTransaction").mouseout(function () {
+            //    $("#menuTransaction").css("color", textColor);
+            //});
+
+            //$("#menuMasterJabatan").mouseout(function () {
+            //    $("#menuMasterJabatan").css("color", textColor);
+            //});
+
+            //$("#menuMasterUser").mouseout(function () {
+            //    $("#menuMasterUser").css("color", textColor);
+            //});
+
+            //$("#menuMasterClient").mouseout(function () {
+            //    $("#menuMasterClient").css("color", textColor);
+            //});
+
+            //$("#menuMasterProvince").mouseout(function () {
+            //    $("#menuMasterProvince").css("color", textColor);
+            //});
+
+            //$("#menuMasterCity").mouseout(function () {
+            //    $("#menuMasterCity").css("color", textColor);
+            //});
+
+            //$("#menuMasterDeveloper").mouseout(function () {
+            //    $("#menuMasterDeveloper").css("color", textColor);
+            //});
+
+            //$("#menuMasterContractor").mouseout(function () {
+            //    $("#menuMasterContractor").css("color", textColor);
+            //});
+
+            //$("#menuMasterConsultant").mouseout(function () {
+            //    $("#menuMasterConsultant").css("color", textColor);
+            //});
+
+            //$("#menuMasterSupplier").mouseout(function () {
+            //    $("#menuMasterSupplier").css("color", textColor);
+            //});
+
+            //$("#menuProjectMaster").mouseout(function () {
+            //    $("#menuProjectMaster").css("color", textColor);
+            //});
+
+            //$("#menuProjectOther").mouseout(function () {
+            //    $("#menuProjectOther").css("color", textColor);
+            //});
+
+        }
+
+        if (userId == null && userNik == null && userName == null) {
+            var url = "Loginpage.html";
+            window.location.href = url;
+        }
+
+        if (userId == "") {
+            var url = "Loginpage.html";
+            window.location.href = url;
+        }
+
+            //set display menu visibility
+        if (userJabatanName != "Administrator") {
+            $("#menuMaster").css("display", "none");
+        }
+    });
+
+        function Logout() {
+            sessionStorage.setItem('UserId', '');
+            sessionStorage.setItem('UserNIK', '');
+            sessionStorage.setItem('UserName', '');
+            sessionStorage.setItem('UserJabatanId', '');
+            sessionStorage.setItem('UserJabatanName', '');
+
+            var url = "Loginpage.html";
+            window.location.href = url;
+    }
+    </script>
+
+</body>
+</html>

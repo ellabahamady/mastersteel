@@ -1,0 +1,693 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Master Steel | Users</title>
+    <link rel="shortcut icon" href="Image/IconMasterSteel.png" />
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/menu_sideslide.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="css2/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css2/component.css" />
+    <script src="js2/modernizr-custom.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- List Menu-->
+        <div class="menu-wrap">
+            <nav id="ml-menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li id="MasterUsers" class="menu__item"><a class="menu__link active" href="Users.html">Users</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Projects.html">Projects</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ClientProject.html">Client Project</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ListOrders.html">List Orders</a></li>
+                        <li class="menu__item"><a class="menu__link" href="TrackingOrder.html">Tracking Order</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Setting.html">Setting</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+
+        <!-- Content Website -->
+        <button class="menu-button" id="open-button" style="margin-top:2%;">Open Menu</button>
+        <div class="content-wrap">
+            <div class="content">
+                <table>
+                    <!-- Hidden Id -->
+                    <tr>
+                        <td>
+                            <input type="hidden" id="hiddenId" />
+
+                            <input type="hidden" id="hiddenToken" />
+                            <input type="hidden" id="hiddenUserId" />
+                            <input type="hidden" id="hiddenUserName" />
+                            <input type="hidden" id="hiddenUserPassword" />
+                            <input type="hidden" id="hiddenUserMail" />
+                            <input type="hidden" id="hiddenUserType" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Image/LogoMasterSteel.png" width="320" height="74" style="margin-left:30%; margin-top:1%; margin-bottom:3%;" />
+                        </td>
+                        <td>
+                            <a href="Login.html" id="Logout" class="UserMenu" onclick="Logout();">Logout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content" style="margin-top:1%; width:98%; margin-left:1%;">
+                <table align="center" width="90%">
+                    <tr>
+                        <td align="center">
+                            <h3 class="labelTitlePage">Master User</h3>
+                        </td>
+                    </tr>
+                    <!-- Data Table -->
+                    <tr>
+                        <td>
+                            <div>
+                                <table id="datatable" border="1" class="display" align="center" style="text-align:center" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>User Id</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Type</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Add Button -->
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <input type="button" value="Add" class="buttonAdd" id="btnAdd" onclick="setEmptyField();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="FormUser">
+                                <table border="0" align="center" style="margin-top:10px;">
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblUserId" class="labelNIK">User Id</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtUserId" class='TabOnEnter Textbox' tabindex="1" style="width:400px" />
+                                        </td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <label id="lblUserIdWarning" style="color:red" class="labelNIKWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblUserName" class="labelNama">Username</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtUserName" class='TabOnEnter Textbox' tabindex="2" style="width:400px" />
+                                        </td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <label id="lblNamaWarning" style="color:red" class="labelNamaWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblType" class="labelJabatan">Type</label>
+                                        </td>
+                                        <td>
+                                            <select id="ddlType" class='TabOnEnter Textbox' tabindex="3" style="width:400px">
+                                                <option value="0">Admin</option>
+                                                <option value="1">User</option>
+                                                <option value="2">Client</option>
+                                            </select>
+                                        </td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <label id="lblTypeWarning" style="color:red" class="labelJabatanWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblEmail" class="labelEmail">Email</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtEmail" class='TabOnEnter Textbox' tabindex="4" style="width:400px" />
+                                        </td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <label id="lblEmailWarning" style="color:red" class="labelEmailWarning"></label>
+                                            <label id="lblEmailValidation" style="color:red" class="labelEmailValidation"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label id="lblPassword" class="labelPassword">Password</label>
+                                        </td>
+                                        <td>
+                                            <input type="password" id="txtPassword" class='TabOnEnter Textbox' tabindex="5" style="width:400px" />
+                                        </td>                                       
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <label id="lblPasswordWarning" style="color:red" class="labelPasswordWarning"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="15"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="button" value="Change Token" class="buttonDelete Button" style="margin-right:10px" id="btnChangeToken" onclick="checkFieldToken();" />
+                                    </td>
+                                    <td>
+                                        <input type="button" value="Delete" class="buttonDelete Button" id="btnDelete" onclick="return validasiDelete();" />
+                                    </td>
+                                    <td width="10"></td>
+                                    <td>
+                                        <input type="button" value="Save" class="buttonSave Button" id="btnSave" onclick="checkField();" />
+                                    </td>
+                                    <td width="10"></td>
+                                    <td>
+                                        <input type="button" value="Cancel" class="buttonCancel Button" id="btnCancel" onclick="setEmptyField();" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Loading Gif-->
+            <div class="loader" id="loading"></div>
+
+            <div class="content" style="margin-top:1%;">
+                <table style="margin-left:5%;" width="100%" height="75">
+                    <tr>
+                        <td>
+                            <a href="#" id="AboutUs" style="color:#ffffff" class="AboutUs">About Us</a>
+                        </td>
+                        <td>
+                            <a href="#" id="ContactUs" style="color:#ffffff" class="ContactUs">Contact Us</a>
+                        </td>
+                        <td>
+                            <label class="Copyright">copyright&copy;2015 TheMasterSteel</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /content-wrap -->
+    </div><!-- /container -->
+    <script src="js/classie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js2/classie.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        (function () {
+            var menuEl = document.getElementById('ml-menu'),
+                mlmenu = new MLMenu(menuEl, {
+                    backCtrl: false
+                });
+        })();
+    </script>
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/CustomStyle.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+
+    <script src="js/jquery-impromptu.min.js"></script>
+    <link rel='stylesheet' type='text/css' href="CSS/jquery-impromptu.css" />
+
+    <!--loading gif-->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        })
+    </script>
+
+    <script>
+        var token;
+        var userId;
+        var userName;
+        var userPassword;
+        var userMail;
+        var userType;
+
+        //WEB API URI
+        //var uri = 'http://localhost:5842/api/User';
+        //var uriBase = 'http://localhost:5842/';
+
+        var uri = 'http://mastersteel.azurewebsites.net/api/user';
+        var uriBase = 'http://mastersteel.azurewebsites.net/';
+
+        //DATA TABLE
+        var table;
+        var loadJabatan = 'false';
+
+        $(document).ready(function () {
+            token = sessionStorage.getItem('Token');
+            userId = sessionStorage.getItem('UserID');
+            userName = sessionStorage.getItem('UserName');
+            userPassword = sessionStorage.getItem('UserPassword');
+            userMail = sessionStorage.getItem('UserMail');
+            userType = sessionStorage.getItem('UserType');
+
+            $("#hiddenToken").val(token);
+            $("#hiddenUserId").val(userId);
+            $("#hiddenUserName").val(userName);
+            $("#hiddenUserPassword").val(userPassword);
+            $("#hiddenUserMail").val(userMail);
+            $("#hiddenUserType").val(userType);
+
+            if (userId == null) {
+                var url = "Login.html";
+                window.location.href = url;
+            }
+
+            if (userType == '1') {
+                $("#MasterUsers").hide();
+            }
+
+            //ON FORM LOAD - GET NEWS DATA
+            $.getJSON(uri + '/GetAllUsers/values?token=' + token)
+                .done(function (data) {
+                    // On success, 'data' contains a list of products.
+                    $('#datatable').DataTable(
+                        {
+                            data: data,
+                            columns: [
+                                { data: 'UserID' },
+                                { data: 'UserName' },
+                                { data: 'Mail' },
+                                { data: 'Type' }
+                            ]
+                        }
+                        );
+
+                    table = $('#datatable').DataTable();
+
+                    //function row table selected
+                    $('#datatable tbody').on('click', 'tr', function () {
+
+                        if ($(this).hasClass('selected')) {
+                            $(this).removeClass('selected');
+                        }
+                        else {
+                            table.$('tr.selected').removeClass('selected');
+                            $(this).addClass('selected');
+                        }
+
+                        //show details data
+                        var dataRow = table.row(this).data();
+                        getUserById(dataRow.UserGenerateID);
+
+                    });
+
+                });
+
+            document.getElementById("ddlType").selectedIndex = "1";
+
+        });
+
+        function getUserById(userGenerateID) {
+            $.getJSON(uri + '/GetUser/values?userGenerateID=' + userGenerateID)
+                .done(function (data) {
+                    $("#hiddenId").val(data.UserGenerateID);
+                    $("#txtUserId").val(data.UserID);
+                    $("#txtUserName").val(data.UserName);
+
+                    document.getElementById("ddlType").selectedIndex = data.Type;
+
+                    $("#txtEmail").val(data.Mail);
+                    $("#txtPassword").val(data.Password);
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    alert("Error : " + err.text);
+                });
+        }
+
+        function checkField() {
+            if ($("#txtUserId").val() == '') {
+                document.getElementById('lblUserIdWarning').innerHTML = 'User Id tidak boleh kosong';
+            }
+            if ($("#txtUserId").val() != '') {
+                document.getElementById('lblUserIdWarning').innerHTML = '';
+            }
+            if ($("#txtUserName").val() == '') {
+                document.getElementById('lblNamaWarning').innerHTML = 'Username tidak boleh kosong';
+            }
+            if ($("#txtUserName").val() != '') {
+                document.getElementById('lblNamaWarning').innerHTML = '';
+            }
+            if ($("#ddlType").val() == '0') {
+                document.getElementById('lblTypeWarning').innerHTML = 'Pilih salah satu jabatan';
+            }
+            if ($("#ddlType").val() != '0') {
+                document.getElementById('lblTypeWarning').innerHTML = '';
+            }
+            if ($("#txtEmail").val() == '') {
+                document.getElementById('lblEmailWarning').innerHTML = 'Email tidak boleh kosong';
+            }
+            if ($("#txtEmail").val() != '') {
+                document.getElementById('lblEmailWarning').innerHTML = '';
+            }
+            if ($("#txtPassword").val() == '') {
+                document.getElementById('lblPasswordWarning').innerHTML = 'Password tidak boleh kosong';
+            }
+            if ($("#txtPassword").val() != '') {
+                document.getElementById('lblPasswordWarning').innerHTML = '';
+            }
+            if ($("#txtUserId").val() != '' && $("#txtUserName").val() != '' && $("#ddlType").val() != '0' && $("#txtEmail").val() != '' && $("#txtPassword").val() != '') {
+                validasiKonfirmasiEmail();
+            }
+        }
+
+        function ValidateEmail(email) {
+            var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            return expr.test(email);
+        }
+
+        function validasiKonfirmasiEmail() {
+            if (ValidateEmail($("#txtEmail").val())) {
+                checkUsername();
+            }
+            else {
+                //alert("Invalid email address.");
+                document.getElementById('lblEmailValidation').innerHTML = 'Invalid Email';
+            }
+
+        }
+
+        function checkUsername() {
+            var userGenerateID = $("#hiddenId").val();
+            if (userGenerateID == "" || userGenerateID == "Add") {
+                var userName = $('#txtUserName').val();
+
+                $.getJSON(uri + '/CheckUsername/values?userName=' + userName)
+                   .done(function (data) {
+                       var result = data.ResultStr;
+                       if (result == '0') {
+                           validasiSave();
+                       }
+                       else {
+                           document.getElementById('lblNamaWarning').innerHTML = 'Username sudah digunakan, silahkan pilih username lain';
+                       }
+                   })
+                   .fail(function (jqXHR, textStatus, err) {
+                       alert("Error : " + err.text);
+                   });
+            }
+            else {
+                validasiSave();
+            }
+ 
+        }
+
+        function validasiSave() {
+            $.prompt("Apakah data anda sudah benar?", {
+                title: "Save Data",
+                buttons: { "Ya": true, "Tidak": false },
+                submit: function (e, v, m, f) {
+
+                    if (v) {
+                        addUpdateData();
+                    }
+
+                    console.log("Value clicked was: " + v);
+                }
+            });
+        }
+
+        function addUpdateData() {
+            var token = $("#hiddenToken").val();
+            var userGenerateID = $("#hiddenId").val();
+            var userID = $("#txtUserId").val();
+            var userName = $("#txtUserName").val();
+            var password = $("#txtPassword").val();
+            var mail = $("#txtEmail").val();
+            var type = $("#ddlType").val();
+            var userUpdateID = $("#hiddenUserId").val();
+
+
+            if (userGenerateID == "" || userGenerateID == "Add") {
+
+                saveData(token, userID, userName, password, mail, type, userUpdateID);
+            }
+            else {
+                updateData(token, userGenerateID, userID, userName, password, mail, type, userUpdateID);
+            }
+            setEmptyField();
+
+        }
+
+        function saveData(token, userID, userName, password, mail, type, userUpdateID) {
+            $("#loading").show(); //show loading
+            table.destroy();
+
+            var userData = { token: token, userID: userID, userName: userName, password: password, mail: mail, type: type, userUpdateID: userUpdateID }
+            $.ajax({
+                type: 'POST',
+                url: uri + '/SaveUser',
+                data: JSON.stringify(userData),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $.getJSON(uri)
+                        .done(function (data) {
+                            // On success, 'data' contains a list of products
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'UserID' },
+                                        { data: 'UserName' },
+                                        { data: 'Mail' },
+                                        { data: 'Type' }
+                                    ]
+                                });
+                            table = $('#datatable').DataTable();
+                        });
+                    window.location.reload(true);
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+        function updateData(token, userGenerateID, userID, userName, password, mail, type, userUpdateID) {
+            $("#loading").show(); //show loading
+            table.destroy();
+            var userData = { token: token, userGenerateID: userGenerateID, userID: userID, userName: userName, password: password, mail: mail, type: type, userUpdateID: userUpdateID }
+            $.ajax({
+                type: 'PUT',
+                url: uri + '/UpdateData',
+                data: JSON.stringify(userData),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $.getJSON(uri)
+                        .done(function (data) {
+                            // On success, 'data' contains a list of products
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'UserID' },
+                                        { data: 'UserName' },
+                                        { data: 'Mail' },
+                                        { data: 'Type' }
+                                    ]
+                                }
+                                );
+
+
+                            table = $('#datatable').DataTable();
+                        });
+                    window.location.reload(true);
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+        function validasiDelete() {
+            $.prompt("Apakah anda yakin ingin menghapus data ini?", {
+                title: "Delete Data",
+                buttons: { "Ya": true, "Tidak": false },
+                submit: function (e, v, m, f) {
+
+                    if (v) {
+                        deleteData();
+                    }
+
+                    console.log("Value clicked was: " + v);
+                }
+            });
+        }
+
+        function deleting() {
+            table.row('.selected').remove().draw();
+        }
+
+        function deleteData() {
+            $("#loading").show(); //show loading
+            table.destroy();
+
+            var token = $("#hiddenToken").val();
+            var userGenerateID = $('#hiddenId').val();
+
+            $.ajax({
+                type: 'Delete',
+                url: uri + '/DeleteData/values?userGenerateID=' + userGenerateID + '&token=' + token,
+                success: function (data) {
+                    $.getJSON(uri)
+                        .done(function (data) {
+                            // On success, 'data' contains a list of products
+                            $('#datatable').DataTable(
+                                {
+                                    data: data,
+                                    columns: [
+                                        { data: 'UserID' },
+                                        { data: 'UserName' },
+                                        { data: 'Mail' },
+                                        { data: 'Type' }
+                                    ]
+                                });
+                            table = $('#datatable').DataTable();
+                            setEmptyField();
+                        });
+                    window.location.reload(true);
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                }
+            });
+        }
+
+        function checkFieldToken() {
+            if ($("#txtUserId").val() == '') {
+                document.getElementById('lblUserIdWarning').innerHTML = 'Klik User yang akan anda ganti tokennya';
+            }
+            if ($("#txtUserId").val() != '') {
+                document.getElementById('lblUserIdWarning').innerHTML = '';
+            }
+            if ($("#txtUserId").val() != '') {
+                validasiChangeToken();
+            }
+            //setEmptyField();
+        }
+
+        function validasiChangeToken() {
+            $.prompt("Apakah anda yakin ingin mengganti token user ini?", {
+                title: "Change Token",
+                buttons: { "Ya": true, "Tidak": false },
+                submit: function (e, v, m, f) {
+
+                    if (v) {
+                        changeToken();
+                    }
+
+                    console.log("Value clicked was: " + v);
+                }
+            });
+        }
+
+        function changeToken() {
+            $("#loading").show(); //show loading
+
+            var token = $("#hiddenToken").val();
+            var userID = $("#txtUserId").val();
+
+            $.ajax({
+                type: 'Get',
+                url: uri + '/ChangeToken/values?userID=' + userID + '&token=' + token,
+                success: function (result) {
+                    alert(result);
+                    
+                },
+                complete: function () {
+                    $("#loading").hide(); //hide loading here
+                    
+                }
+            });
+
+            setEmptyField();
+        }
+
+        //Enter Key to move to inputs
+        $(document).on("keypress", ".TabOnEnter", function (e) {
+            //Only do something when the user presses enter
+            if (e.keyCode == 13) {
+                var nextElement = $('[tabindex="' + (this.tabIndex + 1) + '"]');
+                console.log(this, nextElement);
+                if (nextElement.length)
+                    nextElement.focus()
+                else
+                    $('[tabindex="1"]').focus();
+            }
+        });
+
+        function setEmptyField() {
+            $("#txtUserId").val("");
+            $("#txtUserName").val("");
+            document.getElementById("ddlType").selectedIndex = "1";
+            $("#txtEmail").val("");
+            $("#txtPassword").val("");
+            $("#hiddenId").val("Add");
+        }
+
+        function Logout() {
+            sessionStorage.setItem('UserID', '');
+            sessionStorage.setItem('UserName', '');
+            sessionStorage.setItem('UserMail', '');
+            sessionStorage.setItem('UserType', '');
+
+            var url = "Login.html";
+            window.location.href = url;
+        }
+
+    </script>
+</body>
+</html>
